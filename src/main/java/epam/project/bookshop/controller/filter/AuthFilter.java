@@ -32,19 +32,23 @@ public class AuthFilter implements Filter {
         UserDao userDao = UserDaoImpl.getInstance();
 
         try {
-            Optional<Long> role = userDao.findUserRoleByUsernameAndPassword(username, password);
+            if  (command.equals("login")){
+                Optional<Long> role = userDao.findUserRoleByUsernameAndPassword(username, password);
 
-            boolean permission = false;
+                boolean permission = false;
 
-            if (role.isPresent()) {
-                permission = Role.findPermission(role.get(), command);
-            }
+                if (role.isPresent()) {
+                    permission = Role.findPermission(role.get(), command);
+                }
 
-            if (!permission) {
-                httpServletResponse.sendError(403);
-            } else if(role.get()==Role.ADMIN.ordinal()) {
-                request.getRequestDispatcher(WebPageName.ADMIN_PAGE).forward(request, response);
-            }else {
+                if (!permission) {
+                    httpServletResponse.sendError(403);
+                } else if(role.get()==Role.ADMIN.ordinal()) {
+                    request.getRequestDispatcher(WebPageName.ADMIN_PAGE).forward(request, response);
+                }else {
+                    chain.doFilter(request, response);
+                }
+            } else {
                 chain.doFilter(request, response);
             }
 
