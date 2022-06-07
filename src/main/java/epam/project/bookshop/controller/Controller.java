@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.io.IOException;
 
 @WebServlet(name = "helloServlet", value = "/controller")
@@ -31,6 +32,7 @@ public class Controller extends HttpServlet {
         } catch (CommandException e) {
             throw new ServletException(e);
         }
+        System.out.println();
     }
 
     @Override
