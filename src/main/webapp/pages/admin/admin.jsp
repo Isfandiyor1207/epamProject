@@ -15,9 +15,9 @@
     <title>cms dashboard
     </title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="pages/css/bootstrap.min.css">
     <!----css3---->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="pages/css/custom.css">
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,7 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3><img src="img/logo.png" class="img-fluid"/><span>Vishweb design</span></h3>
+            <h3><img src="pages/img/logo.png" class="img-fluid"/><span>Vishweb design</span></h3>
         </div>
         <ul class="list-unstyled components">
             <li  class="active">
@@ -539,10 +539,10 @@ follow_the_signs
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="pages/js/jquery-3.3.1.slim.min.js"></script>
+<script src="pages/js/popper.min.js"></script>
+<script src="pages/js/bootstrap.min.js"></script>
+<script src="pages/js/jquery-3.3.1.min.js"></script>
 
 
 <script type="text/javascript">

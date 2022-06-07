@@ -9,7 +9,7 @@
     <meta name="author" content="" />
     <title>Freelancer - Start Bootstrap Theme</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="pages/assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
             crossorigin="anonymous"></script>
@@ -20,7 +20,7 @@
             href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
             rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/index-styles.css" rel="stylesheet" />
+    <link href="pages/css/index-styles.css" rel="stylesheet" />
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -55,7 +55,7 @@
 <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg"
+        <img class="masthead-avatar mb-5" src="pages/assets/img/avataaars.svg"
              alt="..." />
         <!-- Masthead Heading-->
         <h1 class="masthead-heading text-uppercase mb-0">Welcome To Unique Developer</h1>
@@ -99,7 +99,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cabin.png"
+                    <img class="img-fluid" src="pages/assets/img/portfolio/cabin.png"
                          alt="..." />
                 </div>
             </div>
@@ -114,7 +114,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cake.png"
+                    <img class="img-fluid" src="pages/assets/img/portfolio/cake.png"
                          alt="..." />
                 </div>
             </div>
@@ -129,7 +129,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/circus.png"
+                    <img class="img-fluid" src="pages/assets/img/portfolio/circus.png"
                          alt="..." />
                 </div>
             </div>
@@ -144,7 +144,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/game.png"
+                    <img class="img-fluid" src="pages/assets/img/portfolio/game.png"
                          alt="..." />
                 </div>
             </div>
@@ -159,7 +159,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/safe.png"
+                    <img class="img-fluid" src="pages/assets/img/portfolio/safe.png"
                          alt="..." />
                 </div>
             </div>
@@ -174,7 +174,7 @@
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/submarine.png"
+                    <img class="img-fluid" src="pages/assets/img/portfolio/submarine.png"
                          alt="..." />
                 </div>
             </div>
@@ -375,7 +375,7 @@
                             </div>
                             <!-- Portfolio Modal - Image-->
                             <img class="img-fluid rounded mb-5"
-                                 src="assets/img/portfolio/cabin.png" alt="..." />
+                                 src="pages/assets/img/portfolio/cabin.png" alt="..." />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Mollitia neque assumenda ipsam nihil,
@@ -420,7 +420,7 @@
                             </div>
                             <!-- Portfolio Modal - Image-->
                             <img class="img-fluid rounded mb-5"
-                                 src="assets/img/portfolio/cake.png" alt="..." />
+                                 src="pages/assets/img/portfolio/cake.png" alt="..." />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Mollitia neque assumenda ipsam nihil,
@@ -465,7 +465,7 @@
                             </div>
                             <!-- Portfolio Modal - Image-->
                             <img class="img-fluid rounded mb-5"
-                                 src="assets/img/portfolio/circus.png" alt="..." />
+                                 src="pages/assets/img/portfolio/circus.png" alt="..." />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Mollitia neque assumenda ipsam nihil,
@@ -509,7 +509,7 @@
                             </div>
                             <!-- Portfolio Modal - Image-->
                             <img class="img-fluid rounded mb-5"
-                                 src="assets/img/portfolio/game.png" alt="..." />
+                                 src="pages/assets/img/portfolio/game.png" alt="..." />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Mollitia neque assumenda ipsam nihil,
@@ -554,7 +554,7 @@
                             </div>
                             <!-- Portfolio Modal - Image-->
                             <img class="img-fluid rounded mb-5"
-                                 src="assets/img/portfolio/safe.png" alt="..." />
+                                 src="pages/assets/img/portfolio/safe.png" alt="..." />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Mollitia neque assumenda ipsam nihil,
@@ -598,7 +598,7 @@
                             </div>
                             <!-- Portfolio Modal - Image-->
                             <img class="img-fluid rounded mb-5"
-                                 src="assets/img/portfolio/submarine.png" alt="..." />
+                                 src="pages/assets/img/portfolio/submarine.png" alt="..." />
                             <!-- Portfolio Modal - Text-->
                             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Mollitia neque assumenda ipsam nihil,
@@ -620,7 +620,7 @@
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
+<script src="pages/js/scripts.js"></script>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <!-- * *                               SB Forms JS                               * *-->
 <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

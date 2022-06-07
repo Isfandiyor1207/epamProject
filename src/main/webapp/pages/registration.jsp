@@ -8,10 +8,10 @@
 
 <!-- Font Icon -->
 <link rel="stylesheet"
-	href="fonts/material-icon/css/material-design-iconic-font.min.css">
+	href="../fonts/material-icon/css/material-design-iconic-font.min.css">
 
 <!-- Main css -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -68,7 +68,7 @@
 					</div>
 					<div class="signup-image">
 						<figure>
-							<img src="img/signup-image.jpg" alt="sing up image">
+							<img src="../img/signup-image.jpg" alt="sing up image">
 						</figure>
 						<a href="main.jsp" class="signup-image-link">I am already member</a>
 					</div>
@@ -80,7 +80,7 @@
 	</div>
 	<!-- JS -->
 	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="../js/main.js"></script>
 
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
