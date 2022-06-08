@@ -10,6 +10,7 @@ public final class ParameterName {
     public static final String PASSWORD = "password";
     public static final String PSW_REPEAT = "psw_repeat";
     public static final String PHONE_NUMBER = "contact";
+    public static final String USER_ROLE_ID = "roleId";
 
     private ParameterName() {
     }

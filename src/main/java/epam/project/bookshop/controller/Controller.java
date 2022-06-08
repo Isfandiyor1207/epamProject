@@ -21,22 +21,18 @@ public class Controller extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html");
-
-        String command = request.getParameter("command");// input dagi name
-        Command execute = CommandType.castToCommand(command);
-        String page;
-        try {
-            page = execute.execute(request);
-            request.getRequestDispatcher(page).forward(request, response);
-        } catch (CommandException e) {
-            throw new ServletException(e);
-        }
-        System.out.println();
+        controllerCommand(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        controllerCommand(req, resp);
+    }
+
+    public void destroy() {
+    }
+
+    private void controllerCommand(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
 
         String command = req.getParameter("command");// input dagi name
@@ -48,9 +44,6 @@ public class Controller extends HttpServlet {
         } catch (CommandException e) {
             throw new ServletException(e); // 2
         }
-    }
-
-    public void destroy() {
     }
 
 }

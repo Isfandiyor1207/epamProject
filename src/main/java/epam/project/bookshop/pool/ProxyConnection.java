@@ -15,10 +15,10 @@ public class ProxyConnection implements Connection {
 
     @Override
     public void close() throws SQLException {
-        ConnectionPool.getInstance().realiseConnection(this);
+        ConnectionPool.getInstance().releaseConnection(this);
     }
 
-    public void reallyClose() {
+    void reallyClose() {
         try {
             connection.close();
         } catch (SQLException e) {

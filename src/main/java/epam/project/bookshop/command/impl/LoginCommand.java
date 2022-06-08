@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import javax.xml.validation.Validator;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginCommand implements Command {
     @Override
@@ -20,7 +22,7 @@ public class LoginCommand implements Command {
         String username =  request.getParameter(ParameterName.USERNAME);
         String password = request.getParameter(ParameterName.PASSWORD);
         UserService userService = UserServiceImpl.getInstance();
-        boolean authenticate;
+        Long authenticate;
 
         String page;
         HttpSession session = request.getSession();
@@ -31,17 +33,23 @@ public class LoginCommand implements Command {
             request.setAttribute("login_error", "Login or Password is incorrect!");
             return WebPageName.INDEX_PAGE;
         }
-
         try {
-            authenticate = userService.authenticate(username, password);
+             authenticate = userService.authenticate(username, password);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
 
-        if (authenticate){
+        if (authenticate>=0){
+
             request.setAttribute("user", username);
-            session.setAttribute("username", username);
-            page = WebPageName.MAIN_PAGE;
+            session.setAttribute(ParameterName.USERNAME, username);
+            session.setAttribute(ParameterName.USER_ROLE_ID, authenticate);
+
+            if (authenticate==0){
+                page = WebPageName.ADMIN_PAGE;
+            } else {
+                page = WebPageName.MAIN_PAGE;
+            }
 
         }else {
             request.setAttribute("login_error", "Login or Password is incorrect!");

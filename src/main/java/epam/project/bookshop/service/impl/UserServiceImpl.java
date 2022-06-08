@@ -6,19 +6,16 @@ import epam.project.bookshop.exception.DaoException;
 import epam.project.bookshop.exception.ServiceException;
 import epam.project.bookshop.service.UserService;
 import epam.project.bookshop.validation.BaseValidation;
-import epam.project.bookshop.validation.RegistrationValidation;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
-    static Logger logger= LogManager.getLogger();
+    static Logger logger = LogManager.getLogger();
     private static final UserServiceImpl instance = new UserServiceImpl();
-    private UserDaoImpl userDao = UserDaoImpl.getInstance();
+    private final UserDaoImpl userDao = UserDaoImpl.getInstance();
 
     private UserServiceImpl() {
     }
@@ -28,21 +25,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean authenticate(String login, String password) throws ServiceException {
+    public Long authenticate(String login, String password) throws ServiceException {
+
         Optional<User> dao;
+
         BaseValidation validation = new BaseValidation();
         if (validation.isEmpty(login) && validation.isEmpty(password)) {
-            return false;
-        }
-        try {
-            dao = userDao.findByUsername(login);
-            if (dao.isPresent()) {
-                return dao.get().getUsername().equals(login) && dao.get().getPassword().equals(password);
-            } else {
-                throw new ServiceException("User by username is not exist");
+            return -1L;
+        } else {
+            try {
+                dao = userDao.findByUsername(login);
+                if (dao.isPresent()) {
+                    return dao.get().getUsername().equals(login) && dao.get().getPassword().equals(password) ? dao.get().getRoleId() : -1;
+                } else {
+                    throw new ServiceException("User by this username is not exist");
+                }
+            } catch (DaoException e) {
+                throw new ServiceException(e);
             }
-        } catch (DaoException e) {
-            throw new ServiceException(e);
         }
     }
 

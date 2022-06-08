@@ -1,7 +1,5 @@
 package epam.project.bookshop.entity;
 
-import lombok.*;
-import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
@@ -9,23 +7,53 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-@Getter
-@Setter
 @SuperBuilder
-@AllArgsConstructor
-@NoArgsConstructor
-@FieldDefaults(level = AccessLevel.PROTECTED)
 public abstract class BaseDomain implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    Long id;
+    protected Long id;
 
-    boolean deleted;
+    protected boolean deleted;
 
-    LocalDate createdTime = LocalDate.now();
+    protected LocalDate createdTime = LocalDate.now();
 
-    LocalDate updatedTime;
+    protected LocalDate updatedTime;
+
+    public BaseDomain() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public LocalDate getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(LocalDate createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public LocalDate getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(LocalDate updatedTime) {
+        this.updatedTime = updatedTime;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -41,7 +69,7 @@ public abstract class BaseDomain implements Serializable {
         int result = 1;
 
         result = 31 * result + (id == null ? 0 : id.hashCode());
-        result = 31 * result + (deleted? 1 : 0);
+        result = 31 * result + (deleted ? 1 : 0);
 
         return result;
     }

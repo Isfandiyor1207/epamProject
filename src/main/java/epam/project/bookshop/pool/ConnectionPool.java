@@ -20,14 +20,10 @@ public class ConnectionPool {
 
     static {
         try {
-//            DriverManager.registerDriver(new  com.mysql.cj.jdbc.Driver());
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             throw new ExceptionInInitializerError(e);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            throw new ExceptionInInitializerError(e);
         }
     }
 
@@ -79,7 +75,7 @@ public class ConnectionPool {
 
     // todo deregisterDriver
 
-    public void realiseConnection(Connection connection) {
+    public void releaseConnection(Connection connection) {
         try {
             used.remove(connection);
             free.put(connection);
