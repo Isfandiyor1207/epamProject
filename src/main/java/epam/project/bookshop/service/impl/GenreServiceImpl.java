@@ -5,6 +5,7 @@ import epam.project.bookshop.exception.ServiceException;
 import epam.project.bookshop.service.GenreService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class GenreServiceImpl implements GenreService {
@@ -40,5 +41,10 @@ public class GenreServiceImpl implements GenreService {
     @Override
     public Optional<Genre> findById(Long id) throws ServiceException {
         return Optional.empty();
+    }
+
+    @Override
+    public boolean add(Map<String, String> entity) throws ServiceException {
+        return false;
     }
 }

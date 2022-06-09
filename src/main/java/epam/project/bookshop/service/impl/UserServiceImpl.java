@@ -1,21 +1,31 @@
 package epam.project.bookshop.service.impl;
 
+import epam.project.bookshop.command.ParameterName;
+import epam.project.bookshop.command.WebPageName;
 import epam.project.bookshop.dao.impl.UserDaoImpl;
 import epam.project.bookshop.entity.User;
 import epam.project.bookshop.exception.DaoException;
 import epam.project.bookshop.exception.ServiceException;
 import epam.project.bookshop.service.UserService;
 import epam.project.bookshop.validation.BaseValidation;
+import epam.project.bookshop.validation.RegistrationValidation;
+import epam.project.bookshop.validation.ValidationParameterName;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+
+import static epam.project.bookshop.command.ParameterName.*;
+import static epam.project.bookshop.validation.ValidationParameterName.ERROR_USERNAME_MSG;
+import static epam.project.bookshop.validation.ValidationParameterName.WRONG_USERNAME;
 
 public class UserServiceImpl implements UserService {
     static Logger logger = LogManager.getLogger();
     private static final UserServiceImpl instance = new UserServiceImpl();
     private final UserDaoImpl userDao = UserDaoImpl.getInstance();
+    private final RegistrationValidation registrationValidation=RegistrationValidation.getInstance();
 
     private UserServiceImpl() {
     }
@@ -47,27 +57,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean add(User user) throws ServiceException {
+    public boolean add(Map<String, String> userData) throws ServiceException {
         // todo check to validation email password username phoneNumber
 
-        System.out.println(user);
-        String password = user.getPassword();
+        if (!registrationValidation.userRegistrationValidation(userData)){
+            logger.info("user in userservice");
+            return false;
+        }
 
-//        RegistrationValidation validation = new RegistrationValidation();
+        try {
+            Optional<User> byUsername = userDao.findByUsername(userData.get(USERNAME));
+            if (byUsername.isPresent()){
+                userData.put(WRONG_USERNAME, ERROR_USERNAME_MSG);
+                return false;
+            }
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
 
-//        if (!validation.checkEmailValidation(user.getEmail())) { // fixme how Throw Email is not correct to login page from there
-//            return false;
-//        }
-//
-//        if (!validation.checkPasswordToValidation(password)) { // fixme how Throw Email is not correct to login page from there
-//            return false;
-//        }
-//
-//        if (!validation.checkPhoneNumberToValidation(user.getPhoneNumber())) {
-//            return false;
-//        }
+        User user = new User();
+        user.setFirstName(userData.get(FIRSTNAME));
+        user.setLastName(userData.get(LASTNAME));
+        user.setUsername(userData.get(USERNAME));
+        user.setEmail(userData.get(EMAIL));
+        user.setPassword(userData.get(PASSWORD));
+        user.setPhoneNumber(userData.get(PHONE_NUMBER));
 
-//        user.setPassword(Arrays.toString(DigestUtils.md5(password)));
         try {
             boolean save = userDao.save(user);
             logger.info("check user to add" + save);
@@ -75,6 +90,11 @@ public class UserServiceImpl implements UserService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public boolean add(User entity) throws ServiceException {
+        return false;
     }
 
     @Override

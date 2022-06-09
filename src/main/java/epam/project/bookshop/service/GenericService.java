@@ -3,6 +3,7 @@ package epam.project.bookshop.service;
 import epam.project.bookshop.exception.ServiceException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface GenericService<T> {
@@ -16,4 +17,5 @@ public interface GenericService<T> {
 
     Optional<T> findById(Long id) throws ServiceException;
 
+    boolean add(Map<String, String> entity) throws ServiceException;
 }

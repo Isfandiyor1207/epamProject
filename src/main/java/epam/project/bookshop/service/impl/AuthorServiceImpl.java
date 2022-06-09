@@ -5,6 +5,7 @@ import epam.project.bookshop.exception.ServiceException;
 import epam.project.bookshop.service.AuthorService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class AuthorServiceImpl implements AuthorService {
@@ -41,5 +42,10 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Optional<Author> findById(Long id) throws ServiceException {
         return Optional.empty();
+    }
+
+    @Override
+    public boolean add(Map<String, String> entity) throws ServiceException {
+        return false;
     }
 }

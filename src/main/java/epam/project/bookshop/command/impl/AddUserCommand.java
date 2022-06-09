@@ -11,45 +11,56 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static epam.project.bookshop.command.ParameterName.*;
+
 public class AddUserCommand implements Command {
     static Logger logger= LogManager.getLogger();
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        String firstname = request.getParameter(ParameterName.FIRSTNAME);
-        String lastname = request.getParameter(ParameterName.LASTNAME);
-        String username = request.getParameter(ParameterName.USERNAME);
-        String email = request.getParameter(ParameterName.EMAIL);
-        String phoneNumber = request.getParameter(ParameterName.PHONE_NUMBER);
-        String repeatedPassword = request.getParameter(ParameterName.PSW_REPEAT);
-        String password = request.getParameter(ParameterName.PASSWORD);
+        String firstname = request.getParameter(FIRSTNAME);
+        String lastname = request.getParameter(LASTNAME);
+        String username = request.getParameter(USERNAME);
+        String email = request.getParameter(EMAIL);
+        String phoneNumber = request.getParameter(PHONE_NUMBER);
+        String repeatedPassword = request.getParameter(PSW_REPEAT);
+        String password = request.getParameter(PASSWORD);
 
         UserServiceImpl userService = UserServiceImpl.getInstance();
 
+        Map<String, String> addUser=new HashMap<>();
+        addUser.put(FIRSTNAME, firstname);
+        addUser.put(LASTNAME, lastname);
+        addUser.put(USERNAME, username);
+        addUser.put(EMAIL, email);
+        addUser.put(PHONE_NUMBER, phoneNumber);
+        addUser.put(PASSWORD, password);
+
         String page;
         if (repeatedPassword.equals(password)) {
-            User user = new User();
-            user.setFirstName(firstname);
-            user.setLastName(lastname);
-            user.setUsername(username);
-            user.setEmail(email);
-            user.setPassword(password);
-            user.setPhoneNumber(phoneNumber);
-
-            logger.info("user: " + user);
 
             try {
-                if (userService.add(user)){
+                if (userService.add(addUser)){
                     page = WebPageName.MAIN_PAGE; // fixme redirect is not working
 //                    request.setAttribute("status", "success");
                 }else {
 //                    request.setAttribute("status", "failed");
+
+                    logger.info("user info is incorrect");
+
+                    for (Map.Entry<String, String> entry : addUser.entrySet()) {
+                        request.setAttribute(entry.getKey(), entry.getValue());
+                    }
+
                     page = WebPageName.SIGNUP_PAGE;
                 }
             } catch (ServiceException e) {
                 throw new CommandException(e);
             }
         } else {
-            request.setAttribute(ParameterName.PSW_REPEAT, "Password is not the same.");
+            request.setAttribute(PSW_REPEAT, "Password is not the same.");
             page = WebPageName.SIGNUP_PAGE;
         }
         return page;

@@ -1,7 +1,7 @@
 package epam.project.bookshop.command;
 
 public class Router {
-    private String page = "index.jsp";
+    private String page;
     private Type type= Type.FORWARD;
 
     enum Type{

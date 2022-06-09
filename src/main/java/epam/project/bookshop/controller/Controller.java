@@ -8,13 +8,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.io.IOException;
 
-@WebServlet(name = "helloServlet", value = "/controller")
+@WebServlet(name = "helloServlet", value = {"/controller", "*.do"})
 public class Controller extends HttpServlet {
 
     public void init() {
@@ -40,6 +37,8 @@ public class Controller extends HttpServlet {
         String page;
         try {
             page = execute.execute(req);
+
+//            resp.sendRedirect(req.getRequestURL() +"/" + page);
             req.getRequestDispatcher(page).forward(req, resp);
         } catch (CommandException e) {
             throw new ServletException(e); // 2
