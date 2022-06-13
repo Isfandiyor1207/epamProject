@@ -20,11 +20,6 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public boolean add(Author entity) {
-        return false;
-    }
-
-    @Override
     public boolean deleteById(Long id) {
         return false;
     }

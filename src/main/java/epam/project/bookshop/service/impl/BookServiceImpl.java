@@ -19,11 +19,6 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public boolean add(Book entity) {
-        return false;
-    }
-
-    @Override
     public boolean deleteById(Long id) {
         return false;
     }

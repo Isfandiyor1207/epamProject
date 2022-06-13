@@ -7,11 +7,10 @@
 	<title>Sign Up Form by Colorlib</title>
 
 	<!-- Font Icon -->
-	<link rel="stylesheet"
-		  href="fonts/material-icon/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" href="pages/fonts/material-icon/css/material-design-iconic-font.min.css">
 
 	<!-- Main css -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="pages/css/style.css">
 </head>
 <body>
 
@@ -22,10 +21,9 @@
 			<div class="signin-content">
 				<div class="signin-image">
 					<figure>
-						<img src="img/signin-image.jpg" alt="sing up image">
+						<img src="pages/img/signin-image.jpg" alt="sing up image">
 					</figure>
-					<a href="pages/registration.jsp" class="signup-image-link">Create an
-						account</a>
+					<a href="pages/registration.jsp" class="signup-image-link">Create an account</a>
 				</div>
 
 				<div class="signin-form">
@@ -41,6 +39,7 @@
 							<input type="password" name="password" id="password" placeholder="Password" required="required"/>
 						</div>
 						<b><small style="color: red">${login_error}</small></b>
+						<b><small style="color: red">${user_error}</small></b>
 						<div class="form-group">
 							<input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
 							<label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
@@ -66,7 +65,7 @@
 
 <!-- JS -->
 <script src="vendor/jquery/jquery.min.js"></script>
-<script src="js/main.js"></script>
+<script src="pages/js/main.js"></script>
 
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->

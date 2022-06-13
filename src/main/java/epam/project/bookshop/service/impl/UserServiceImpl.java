@@ -1,7 +1,5 @@
 package epam.project.bookshop.service.impl;
 
-import epam.project.bookshop.command.ParameterName;
-import epam.project.bookshop.command.WebPageName;
 import epam.project.bookshop.dao.impl.UserDaoImpl;
 import epam.project.bookshop.entity.User;
 import epam.project.bookshop.exception.DaoException;
@@ -9,7 +7,6 @@ import epam.project.bookshop.exception.ServiceException;
 import epam.project.bookshop.service.UserService;
 import epam.project.bookshop.validation.BaseValidation;
 import epam.project.bookshop.validation.RegistrationValidation;
-import epam.project.bookshop.validation.ValidationParameterName;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,14 +15,14 @@ import java.util.Map;
 import java.util.Optional;
 
 import static epam.project.bookshop.command.ParameterName.*;
-import static epam.project.bookshop.validation.ValidationParameterName.ERROR_USERNAME_MSG;
-import static epam.project.bookshop.validation.ValidationParameterName.WRONG_USERNAME;
+import static epam.project.bookshop.validation.ValidationParameterName.*;
 
 public class UserServiceImpl implements UserService {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
+    private static final BaseValidation baseValidation = new BaseValidation();
     private static final UserServiceImpl instance = new UserServiceImpl();
     private final UserDaoImpl userDao = UserDaoImpl.getInstance();
-    private final RegistrationValidation registrationValidation=RegistrationValidation.getInstance();
+    private final RegistrationValidation registrationValidation = RegistrationValidation.getInstance();
 
     private UserServiceImpl() {
     }
@@ -35,24 +32,76 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Long authenticate(String login, String password) throws ServiceException {
+    public boolean authenticate(String login, String password) throws ServiceException {
 
         Optional<User> dao;
 
         BaseValidation validation = new BaseValidation();
-        if (validation.isEmpty(login) && validation.isEmpty(password)) {
-            return -1L;
-        } else {
-            try {
-                dao = userDao.findByUsername(login);
-                if (dao.isPresent()) {
-                    return dao.get().getUsername().equals(login) && dao.get().getPassword().equals(password) ? dao.get().getRoleId() : -1;
-                } else {
-                    throw new ServiceException("User by this username is not exist");
+        if (validation.isEmpty(login) || validation.isEmpty(password)) {
+            logger.info("user in validation ");
+            return false;
+        }
+        try {
+            dao = userDao.findByUsername(login);
+            if (dao.isPresent()) {
+                logger.info("dao is exists.");
+                User user = dao.get();
+
+                logger.info("user username:" + user.getUsername() + "registration username: " + login);
+                logger.info("user password:" + user.getPassword() + "registration password: " + password);
+
+                return user.getUsername().equals(login) && user.getPassword().equals(password);
+            } else return false;
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public boolean authenticate(Map<String, String> userLogin) throws ServiceException {
+        Optional<User> dao;
+
+        String username = userLogin.get(USERNAME);
+        String password = userLogin.get(PASSWORD);
+
+        BaseValidation validation = new BaseValidation();
+        if (validation.isEmpty(username) || validation.isEmpty(password)) {
+            logger.info("user in validation ");
+            return false;
+        }
+        try {
+            boolean isAuthenticated = true;
+
+            dao = userDao.findByUsername(username);
+            if (dao.isPresent()) {
+                logger.info("dao is exists.");
+                User user = dao.get();
+
+                logger.info("user username:" + user.getUsername() + "registration username: " + username);
+                logger.info("user password:" + user.getPassword() + "registration password: " + password);
+
+                if (!user.getPassword().equals(password)) {
+                    userLogin.put(WORN_LOGIN, ERROR_LOGIN_MSG);
+                    isAuthenticated = false;
                 }
-            } catch (DaoException e) {
-                throw new ServiceException(e);
+
+                return isAuthenticated;
+            } else {
+                userLogin.put(WORN_USER, ERROR_USER_NOT_EXIST_MSG);
+                return false;
             }
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public Long findUserRoleByUsername(String username) throws ServiceException {
+        try {
+            Optional<Long> roleByUsername = userDao.findUserRoleByUsername(username);
+            return roleByUsername.get();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
         }
     }
 
@@ -60,15 +109,16 @@ public class UserServiceImpl implements UserService {
     public boolean add(Map<String, String> userData) throws ServiceException {
         // todo check to validation email password username phoneNumber
 
-        if (!registrationValidation.userRegistrationValidation(userData)){
-            logger.info("user in userservice");
+        if (!registrationValidation.userRegistrationValidation(userData)) {
+            logger.info("user is not registered his information is invalid");
             return false;
         }
 
         try {
-            Optional<User> byUsername = userDao.findByUsername(userData.get(USERNAME));
-            if (byUsername.isPresent()){
-                userData.put(WRONG_USERNAME, ERROR_USERNAME_MSG);
+            Optional<User> optionalUser = userDao.findByUsername(userData.get(USERNAME));
+            if (optionalUser.isPresent()) {
+                logger.info(optionalUser.get().getUsername() + " is available in database");
+                userData.put(WORN_USERNAME, ERROR_USERNAME_MSG);
                 return false;
             }
         } catch (DaoException e) {
@@ -84,17 +134,12 @@ public class UserServiceImpl implements UserService {
         user.setPhoneNumber(userData.get(PHONE_NUMBER));
 
         try {
-            boolean save = userDao.save(user);
-            logger.info("check user to add" + save);
-            return save;
+            boolean isSave = userDao.save(user);
+            logger.info("check user to add" + isSave);
+            return isSave;
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
-    }
-
-    @Override
-    public boolean add(User entity) throws ServiceException {
-        return false;
     }
 
     @Override
@@ -113,7 +158,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() throws ServiceException {
-        return null;
+        try {
+            return userDao.findAll();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
     }
 
     @Override

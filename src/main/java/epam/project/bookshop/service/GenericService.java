@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface GenericService<T> {
-    boolean add(T entity) throws ServiceException;
 
     boolean deleteById(Long id) throws ServiceException;
 

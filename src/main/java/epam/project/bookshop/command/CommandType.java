@@ -13,6 +13,7 @@ public enum CommandType {
     ADD_USER(new AddUserCommand()),
     DELETE_USER(new DeleteUserCommand()),
     UPDATE_USER(new UpdateUserCommand()),
+    READ_USER(new GetUserCommand()),
 
     // Book commands
     ADD_BOOK(new AddBookCommand()),

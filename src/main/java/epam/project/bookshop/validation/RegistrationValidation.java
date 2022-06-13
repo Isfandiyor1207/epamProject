@@ -37,16 +37,15 @@ public class RegistrationValidation {
     public boolean userRegistrationValidation(Map<String, String> user) {
         boolean isValid = true;
         if (!checkEmailValidation(user.get(EMAIL))) {
-            user.put(WRONG_EMAIL, ERROR_EMAIL_MSG);
-
+            user.put(WORN_EMAIL, ERROR_EMAIL_MSG);
             isValid = false;
         }
         if (!checkPasswordToValidation(user.get(PASSWORD))) {
-            user.put(WRONG_PASSWORD, ERROR_PASSWORD_MSG);
+            user.put(WORN_PASSWORD, ERROR_PASSWORD_MSG);
             isValid = false;
         }
         if (!checkPhoneNumberToValidation(user.get(PHONE_NUMBER))) {
-            user.put(WRONG_PHONE_NUMBER, ERROR_PHONE_NUMBER_MSG);
+            user.put(WORN_PHONE_NUMBER, ERROR_PHONE_NUMBER_MSG);
             isValid = false;
         }
         return isValid;

@@ -6,5 +6,9 @@ import epam.project.bookshop.exception.ServiceException;
 import java.util.Map;
 
 public interface UserService extends GenericService<User> {
-    Long authenticate(String login, String password) throws ServiceException;
+    // fixme to boolean
+    boolean authenticate(String login, String password) throws ServiceException;
+    boolean authenticate(Map<String, String> userLogin) throws ServiceException;
+
+    Long findUserRoleByUsername(String username) throws ServiceException;
 }

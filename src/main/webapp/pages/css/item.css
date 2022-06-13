@@ -1,0 +1,9 @@
+.table th, .table td{
+    text-transform: none;
+    text-align: center;
+    vertical-align: center
+}
+
+.table td form{
+    margin: 0 0;
+}

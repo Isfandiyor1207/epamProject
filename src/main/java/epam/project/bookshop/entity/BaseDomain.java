@@ -16,7 +16,7 @@ public abstract class BaseDomain implements Serializable {
 
     protected boolean deleted;
 
-    protected LocalDate createdTime = LocalDate.now();
+    protected LocalDate createdTime;
 
     protected LocalDate updatedTime;
 

@@ -19,11 +19,6 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public boolean add(Genre entity) {
-        return false;
-    }
-
-    @Override
     public boolean deleteById(Long id) {
         return false;
     }

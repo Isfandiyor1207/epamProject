@@ -9,7 +9,7 @@ public interface UserDao extends BaseDao<User>{
 
     Optional<User> findByUsername(String username) throws DaoException;
 
-    Optional<Long> findUserRoleByUsernameAndPassword(String username, String password) throws DaoException;
+    Optional<Long> findUserRoleByUsername(String username) throws DaoException;
 
 
 }

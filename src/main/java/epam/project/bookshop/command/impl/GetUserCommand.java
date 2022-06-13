@@ -3,33 +3,28 @@ package epam.project.bookshop.command.impl;
 import epam.project.bookshop.command.Command;
 import epam.project.bookshop.command.ParameterName;
 import epam.project.bookshop.command.WebPageName;
+import epam.project.bookshop.entity.User;
 import epam.project.bookshop.exception.CommandException;
 import epam.project.bookshop.exception.ServiceException;
 import epam.project.bookshop.service.UserService;
 import epam.project.bookshop.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import static epam.project.bookshop.validation.ValidationParameterName.*;
+import java.util.List;
 
-public class DeleteUserCommand implements Command {
-    private static Logger logger = LogManager.getLogger();
+public class GetUserCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        String id = request.getParameter(ParameterName.USER_DELETE);
         UserService userService = UserServiceImpl.getInstance();
 
-        logger.info("user id: " + id);
-
         try {
-            if (!userService.deleteById(Long.valueOf(id))) {
-                request.setAttribute(WORN_DELETED, ERROR_USER_NOT_DELETED_MSG);
-            }
-            return WebPageName.USERS_PAGE;
+            List<User> userList = userService.findAll();
+            request.setAttribute(ParameterName.USER_LIST, userList);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
+
+        return WebPageName.USERS_PAGE;
     }
 }

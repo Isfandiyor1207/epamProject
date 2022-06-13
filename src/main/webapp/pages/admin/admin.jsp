@@ -15,21 +15,17 @@
     <title>cms dashboard
     </title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="pages/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/pages/css/bootstrap.min.css">
     <!----css3---->
-    <link rel="stylesheet" href="pages/css/custom.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/pages/css/custom.css">
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-
-
-
     <!--google material icon-->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
@@ -135,10 +131,10 @@
             </li>
             <li class="dropdown">
                 <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">extension</i><span>ui element</span></a>
+                    <i class="material-icons">extension</i><span>users</span></a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu4">
                     <li>
-                        <a href="#">Page 1</a>
+                        <a href="pages/admin/user.jsp">User information</a>
                     </li>
                     <li>
                         <a href="#">Page 2</a>
@@ -275,10 +271,7 @@
                     <div class="card card-stats">
                         <div class="card-header">
                             <div class="icon icon-success">
-                                        <span class="material-icons">
-attach_money
-</span>
-
+                                <span class="material-icons">attach_money</span>
                             </div>
                         </div>
                         <div class="card-content">
@@ -296,10 +289,7 @@ attach_money
                     <div class="card card-stats">
                         <div class="card-header">
                             <div class="icon icon-info">
-
-<span class="material-icons">
-follow_the_signs
-</span>
+                                <span class="material-icons">follow_the_signs</span>
                             </div>
                         </div>
                         <div class="card-content">
@@ -314,7 +304,6 @@ follow_the_signs
                     </div>
                 </div>
             </div>
-
 
             <div class="row ">
                 <div class="col-lg-7 col-md-12">
@@ -470,20 +459,9 @@ follow_the_signs
                     </div>
                 </div>
             </footer>
-
         </div>
-
-
-
     </div>
 </div>
-
-
-
-
-
-
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
