@@ -267,9 +267,9 @@
                             </form>
                         </td>
                         <td style="text-transform: none">
-                            <form action="${pageContext.request.contextPath}/controller">
+                            <form>
                                 <input type="hidden" name="command" value="update_user">
-                                <input type="submit" name="update_user" class="btn btn-outline-warning" value="Update">
+                                <button class="btn btn-outline-warning" value="${item}"><a href="pages/user_update.jsp">Update</a></button>
                             </form>
                         </td>
                     </tr>

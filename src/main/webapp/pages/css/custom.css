@@ -254,6 +254,7 @@ a:focus {
 	position: relative;
     transition: all 0.3s;
 	background-color: #EEEEEE;
+    height: 100%;
 }
 
 .top-navbar{
@@ -266,6 +267,7 @@ a:focus {
 .main-content{
 	padding:10px 20px 0px 20px;
 	position: relative;
+    height: 100%;
     width: 100%;
 }
 

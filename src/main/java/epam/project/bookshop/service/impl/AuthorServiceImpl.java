@@ -30,6 +30,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    public void update(Map<String, String> update) throws ServiceException {
+
+    }
+
+    @Override
     public List<Author> findAll() throws ServiceException {
         return null;
     }

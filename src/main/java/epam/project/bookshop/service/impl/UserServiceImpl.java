@@ -32,32 +32,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean authenticate(String login, String password) throws ServiceException {
-
-        Optional<User> dao;
-
-        BaseValidation validation = new BaseValidation();
-        if (validation.isEmpty(login) || validation.isEmpty(password)) {
-            logger.info("user in validation ");
-            return false;
-        }
-        try {
-            dao = userDao.findByUsername(login);
-            if (dao.isPresent()) {
-                logger.info("dao is exists.");
-                User user = dao.get();
-
-                logger.info("user username:" + user.getUsername() + "registration username: " + login);
-                logger.info("user password:" + user.getPassword() + "registration password: " + password);
-
-                return user.getUsername().equals(login) && user.getPassword().equals(password);
-            } else return false;
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
     public boolean authenticate(Map<String, String> userLogin) throws ServiceException {
         Optional<User> dao;
 
@@ -69,16 +43,13 @@ public class UserServiceImpl implements UserService {
             logger.info("user in validation ");
             return false;
         }
+
         try {
             boolean isAuthenticated = true;
 
             dao = userDao.findByUsername(username);
             if (dao.isPresent()) {
-                logger.info("dao is exists.");
                 User user = dao.get();
-
-                logger.info("user username:" + user.getUsername() + "registration username: " + username);
-                logger.info("user password:" + user.getPassword() + "registration password: " + password);
 
                 if (!user.getPassword().equals(password)) {
                     userLogin.put(WORN_LOGIN, ERROR_LOGIN_MSG);
@@ -107,7 +78,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean add(Map<String, String> userData) throws ServiceException {
-        // todo check to validation email password username phoneNumber
 
         if (!registrationValidation.userRegistrationValidation(userData)) {
             logger.info("user is not registered his information is invalid");
@@ -154,6 +124,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void update(User entity) {
 
+    }
+
+    @Override
+    public void update(Map<String, String> update) throws ServiceException {
+
+        StringBuilder stringBuilder=new StringBuilder();
+
+
+
+//        userDao.updated(update);
     }
 
     @Override

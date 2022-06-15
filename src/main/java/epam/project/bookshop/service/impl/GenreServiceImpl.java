@@ -29,6 +29,11 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
+    public void update(Map<String, String> update) throws ServiceException {
+
+    }
+
+    @Override
     public List<Genre> findAll() throws ServiceException {
         return null;
     }

@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -34,12 +35,14 @@ public class Controller extends HttpServlet {
 
         String command = req.getParameter("command");// input dagi name
         Command execute = CommandType.castToCommand(command);
+
         String page;
         try {
             page = execute.execute(req);
 
 //            resp.sendRedirect(req.getRequestURL() +"/" + page);
             req.getRequestDispatcher(page).forward(req, resp);
+
         } catch (CommandException e) {
             throw new ServletException(e); // 2
         }

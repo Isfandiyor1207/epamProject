@@ -2,6 +2,7 @@ package epam.project.bookshop.command;
 
 public final class ParameterName {
 
+    /* Parameters for jsp file */
     public static final String ID = "id";
     public static final String FIRSTNAME = "firstname";
     public static final String LASTNAME = "lastname";
@@ -11,8 +12,8 @@ public final class ParameterName {
     public static final String PSW_REPEAT = "psw_repeat";
     public static final String PHONE_NUMBER = "contact";
     public static final String USER_ROLE_ID = "roleId";
-
-    /* Parameters for jsp file */
+    public static final String USER_ROLE_ID_IN_DB = "roleid";
+    public static final String USER_PHONE_NUMBER_IN_DB = "phonenumber";
     public static final String USER_LIST = "user_list";
     public static final String USER_DELETE = "delete_user_id";
 

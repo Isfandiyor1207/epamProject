@@ -13,7 +13,7 @@ public enum CommandType {
     ADD_USER(new AddUserCommand()),
     DELETE_USER(new DeleteUserCommand()),
     UPDATE_USER(new UpdateUserCommand()),
-    READ_USER(new GetUserCommand()),
+    READ_USER(new FindAllUsersCommand()),
 
     // Book commands
     ADD_BOOK(new AddBookCommand()),
@@ -40,7 +40,6 @@ public enum CommandType {
     }
 
     public static Command castToCommand(String command) {
-        // todo validation to null or empty
         CommandValidation commandValidation = new CommandValidation();
         boolean commandToValidation = commandValidation.checkCommandToValidation(command);
 

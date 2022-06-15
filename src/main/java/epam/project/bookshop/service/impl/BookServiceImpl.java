@@ -29,6 +29,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public void update(Map<String, String> update) throws ServiceException {
+
+    }
+
+    @Override
     public List<Book> findAll() throws ServiceException {
         return null;
     }

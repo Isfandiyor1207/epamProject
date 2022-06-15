@@ -12,6 +12,8 @@ public interface GenericService<T> {
 
     void update(T entity) throws ServiceException;
 
+    void update(Map<String, String> update) throws ServiceException;
+
     List<T> findAll() throws ServiceException;
 
     Optional<T> findById(Long id) throws ServiceException;

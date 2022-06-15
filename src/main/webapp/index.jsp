@@ -7,10 +7,10 @@
 	<title>Sign Up Form by Colorlib</title>
 
 	<!-- Font Icon -->
-	<link rel="stylesheet" href="pages/fonts/material-icon/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" href="../fonts/material-icon/css/material-design-iconic-font.min.css">
 
 	<!-- Main css -->
-	<link rel="stylesheet" href="pages/css/style.css">
+	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -65,7 +65,7 @@
 
 <!-- JS -->
 <script src="vendor/jquery/jquery.min.js"></script>
-<script src="pages/js/main.js"></script>
+<script src="../js/main.js"></script>
 
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
