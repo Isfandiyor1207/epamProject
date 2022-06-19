@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="uz" scope="session" />
+<fmt:setBundle basename="prop.message"/>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -41,11 +44,11 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3><img src="pages/img/logo.png" class="img-fluid"/><span>Vishweb design</span></h3>
+            <h3><img src="pages/img/logo.png" class="img-fluid"/><span><fmt:message key="label.admin"/></span></h3>
         </div>
         <ul class="list-unstyled components">
             <li  class="active">
-                <a href="#" class="dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
+                <a href="#" class="dashboard"><i class="material-icons">dashboard</i><span><fmt:message key="label.dashboard"/></span></a>
             </li>
 
             <div class="small-screen navbar-display">
@@ -84,7 +87,7 @@
 
             <li class="dropdown">
                 <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">aspect_ratio</i><span>Books</span></a>
+                    <i class="material-icons">aspect_ratio</i><span><fmt:message key="label.books"/></span></a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
                     <li>
                         <a href="#">Home 1</a>
@@ -100,7 +103,7 @@
 
             <li class="dropdown">
                 <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">apps</i><span>Authors</span></a>
+                    <i class="material-icons">apps</i><span><fmt:message key="label.author"/></span></a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu2">
                     <li>
                         <a href="#">Page 1</a>
@@ -116,7 +119,7 @@
 
             <li class="dropdown">
                 <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">equalizer</i><span>Genre</span></a>
+                    <i class="material-icons">equalizer</i><span><fmt:message key="label.genre"/></span></a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu3">
                     <li>
                         <a href="#">Page 1</a>
@@ -131,10 +134,10 @@
             </li>
             <li class="dropdown">
                 <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">extension</i><span>users</span></a>
+                    <i class="material-icons">extension</i><span><fmt:message key="label.users"/></span></a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu4">
                     <li>
-                        <a href="pages/admin/user.jsp">User information</a>
+                        <a href="pages/admin/user.jsp" style="text-transform: none"><fmt:message key="label.user_information"/></a>
                     </li>
                     <li>
                         <a href="#">Page 2</a>
@@ -146,7 +149,7 @@
             </li>
             <li class="dropdown">
                 <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">content_copy</i><span>Pages</span></a>
+                    <i class="material-icons">content_copy</i><span><fmt:message key="label.pages"/></span></a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu7">
                     <li>
                         <a href="#">Page 1</a>
@@ -174,7 +177,7 @@
                         <span class="material-icons">arrow_back_ios</span>
                     </button>
 
-                    <a class="navbar-brand" href="#"> Dashboard </a>
+                    <a class="navbar-brand" href="#"><fmt:message key="label.dashboard"/></a>
 
                     <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -304,122 +307,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row ">
-                <div class="col-lg-7 col-md-12">
-                    <div class="card" style="min-height: 485px">
-                        <div class="card-header card-header-text">
-                            <h4 class="card-title">Employees Stats</h4>
-                            <p class="category">New employees on 15th December, 2016</p>
-                        </div>
-                        <div class="card-content table-responsive">
-                            <table class="table table-hover">
-                                <thead class="text-primary">
-                                <tr><th>ID</th>
-                                    <th>Name</th>
-                                    <th>Salary</th>
-                                    <th>Country</th>
-                                </tr></thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Bob Williams</td>
-                                    <td>$23,566</td>
-                                    <td>USA</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Mike Tyson</td>
-                                    <td>$10,200</td>
-                                    <td>Canada</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Tim Sebastian</td>
-                                    <td>$32,190</td>
-                                    <td>Netherlands</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Philip Morris</td>
-                                    <td>$31,123</td>
-                                    <td>Korea, South</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>South Africa</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Hulk Hogan</td>
-                                    <td>$43,120</td>
-                                    <td>Netherlands</td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td>Angelina Jolie </td>
-                                    <td>$12,140</td>
-                                    <td>Australia</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-5 col-md-12">
-                    <div class="card" style="min-height: 485px">
-                        <div class="card-header card-header-text">
-                            <h4 class="card-title">Activities</h4>
-                        </div>
-                        <div class="card-content">
-                            <div class="streamline">
-                                <div class="sl-item sl-primary">
-                                    <div class="sl-content">
-                                        <small class="text-muted">5 mins ago</small>
-                                        <p>Williams has just joined Project X</p>
-                                    </div>
-                                </div>
-                                <div class="sl-item sl-danger">
-                                    <div class="sl-content">
-                                        <small class="text-muted">25 mins ago</small>
-                                        <p>Jane has sent a request for access to the project folder</p>
-                                    </div>
-                                </div>
-                                <div class="sl-item sl-success">
-                                    <div class="sl-content">
-                                        <small class="text-muted">40 mins ago</small>
-                                        <p>Kate added you to her team</p>
-                                    </div>
-                                </div>
-                                <div class="sl-item">
-                                    <div class="sl-content">
-                                        <small class="text-muted">45 minutes ago</small>
-                                        <p>John has finished his task</p>
-                                    </div>
-                                </div>
-                                <div class="sl-item sl-warning">
-                                    <div class="sl-content">
-                                        <small class="text-muted">55 mins ago</small>
-                                        <p>Jim shared a folder with you</p>
-                                    </div>
-                                </div>
-                                <div class="sl-item">
-                                    <div class="sl-content">
-                                        <small class="text-muted">60 minutes ago</small>
-                                        <p>John has finished his task</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
 
             <footer class="footer">
                 <div class="container-fluid">

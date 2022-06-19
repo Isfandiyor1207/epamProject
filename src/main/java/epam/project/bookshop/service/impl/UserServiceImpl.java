@@ -10,6 +10,7 @@ import epam.project.bookshop.validation.RegistrationValidation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
         String username = userLogin.get(USERNAME);
         String password = userLogin.get(PASSWORD);
 
-        BaseValidation validation = new BaseValidation();
+        BaseValidation validation = BaseValidation.getInstance();
         if (validation.isEmpty(username) || validation.isEmpty(password)) {
             logger.info("user in validation ");
             return false;
@@ -127,13 +128,43 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(Map<String, String> update) throws ServiceException {
+    public boolean update(Map<String, String> update) throws ServiceException {
+
+        Map<String, String> query=new HashMap<>();
+
+        boolean isValid = registrationValidation.checkUpdateUser(update, query);
+
+        if (!isValid){
+            return false;
+        }
+
+        if (baseValidation.isEmpty(update.get(USERNAME))){
+            try {
+                Optional<User> optionalUser = userDao.findByUsername(update.get(USERNAME));
+                if (optionalUser.isPresent()){
+                    update.put(WORN_USERNAME, ERROR_USERNAME_MSG);
+                    return false;
+                }
+            } catch (DaoException e) {
+                logger.error(e);
+                throw new ServiceException(e);
+            }
+
+        }
 
         StringBuilder stringBuilder=new StringBuilder();
 
+        query.forEach((key, value) -> stringBuilder.append(key)
+                .append("=")
+                .append(key)
+                .append(", "));
 
-
-//        userDao.updated(update);
+        try {
+            return userDao.updated(stringBuilder.toString(), 2L);
+        } catch (DaoException e) {
+            logger.error(e.getMessage());
+            throw new ServiceException(e);
+        }
     }
 
     @Override

@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao {
     private static final String SELECT_ALL = "SELECT id, firstname, lastname, phoneNumber, email, username, roleid, password FROM  users WHERE deleted=false order by id";
     private static final String SELECT_ROLE_ID = "SELECT roleid FROM users WHERE username = ? AND deleted=false;";
     private static final String DELETE_USERS_BY_ID = "UPDATE users SET deleted = true WHERE id =? AND deleted = false";
-    private static final String UPDATE_USERS_BY_ID = "UPDATE users SET deleted = true WHERE id =? AND deleted = false";
+    private static final String UPDATE_USERS_BY_ID = "UPDATE users SET   deleted = true WHERE id =? AND deleted = false";
     private static final String INSERT_USER = "INSERT INTO users(firstname, lastname, username, password, email, phoneNumber) VALUES (?, ?, ?, ?, ?, ?)";
     private static UserDaoImpl instance;
 
@@ -58,16 +58,20 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean updated(User user) throws DaoException {
+    public boolean updated(String query, Long id) throws DaoException {
 
         try (Connection connection = ConnectionPool.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_BY_ID)) {
+             Statement statement = connection.createStatement()) {
 
+            String strQuery="UPDATE users SET " + query +
+                    " WHERE id = " + id +" AND deleted = false";
+
+            int row= statement.executeUpdate(strQuery);
+            return row > 0;
         } catch (SQLException e) {
+            logger.error(e);
             throw new DaoException(e);
         }
-
-        return false;
     }
 
     @Override

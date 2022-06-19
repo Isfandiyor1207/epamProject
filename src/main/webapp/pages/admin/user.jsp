@@ -6,10 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="uz" scope="session" />
+<fmt:setBundle basename="prop.message"/>
 <html>
 <head>
     <!-- Required meta tags -->
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -38,11 +41,11 @@
     <nav id="sidebar">
         <div class="sidebar-header">
             <h3><img src="${pageContext.request.contextPath}/pages/img/logo.png"
-                     class="img-fluid"/><span>Vishweb design</span></h3>
+                     class="img-fluid"/><span><fmt:message key="label.admin"/></span></h3>
         </div>
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="#" class="dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
+                <a href="#" class="dashboard"><i class="material-icons">dashboard</i><span><fmt:message key="label.dashboard"/></span></a>
             </li>
 
             <div class="small-screen navbar-display">
@@ -81,7 +84,7 @@
 
             <li class="dropdown">
                 <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">aspect_ratio</i><span>Books</span></a>
+                    <i class="material-icons">aspect_ratio</i><span><fmt:message key="label.books"/></span></a>
                 <ul class="collapse list-unstyled menu" id="homeSubmenu1">
                     <li>
                         <a href="#">Home 1</a>
@@ -97,7 +100,7 @@
 
             <li class="dropdown">
                 <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">apps</i><span>Authors</span></a>
+                    <i class="material-icons">apps</i><span><fmt:message key="label.author"/></span></a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu2">
                     <li>
                         <a href="#">Page 1</a>
@@ -113,7 +116,7 @@
 
             <li class="dropdown">
                 <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">equalizer</i><span>Genre</span></a>
+                    <i class="material-icons">equalizer</i><span><fmt:message key="label.genre"/></span></a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu3">
                     <li>
                         <a href="#">Page 1</a>
@@ -128,10 +131,10 @@
             </li>
             <li class="dropdown">
                 <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">extension</i><span>Users</span></a>
+                    <i class="material-icons">extension</i><span><fmt:message key="label.users"/></span></a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu4">
                     <li>
-                        <a href="#">Page 1</a>
+                        <a href="#" style="text-transform: none"><fmt:message key="label.user_information"/></a>
                     </li>
                     <li>
                         <a href="#">Page 2</a>
@@ -143,7 +146,7 @@
             </li>
             <li class="dropdown">
                 <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">content_copy</i><span>Pages</span></a>
+                    <i class="material-icons">content_copy</i><span><fmt:message key="label.pages"/></span></a>
                 <ul class="collapse list-unstyled menu" id="pageSubmenu7">
                     <li>
                         <a href="#">Page 1</a>
@@ -171,7 +174,7 @@
                         <span class="material-icons">arrow_back_ios</span>
                     </button>
 
-                    <a class="navbar-brand" href="#"> Dashboard </a>
+                    <a class="navbar-brand" href="#"> <fmt:message key="label.dashboard"/> </a>
 
                     <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -229,7 +232,7 @@
 
             <form action="${pageContext.request.contextPath}/controller" method="get">
                 <input type="hidden" name="command" value="read_user">
-                <input type="submit" class="btn btn-primary" value="Show users">
+                <input type="submit" class="btn btn-primary" value="<fmt:message key="label.show_users_button"/>">
             </form>
 
             <b><small style="color: red">${deleted_error}</small></b>
@@ -238,14 +241,14 @@
                 <thead class="table-primary">
                 <tr>
                     <th scope="col" >Id</th>
-                    <th scope="col" >Firstname</th>
-                    <th scope="col" >Lastname</th>
-                    <th scope="col" >Email</th>
-                    <th scope="col" >Username</th>
-                    <th scope="col" >Phone number</th>
-                    <th scope="col" >User role</th>
-                    <th scope="col" >Delete user</th>
-                    <th scope="col" >Update user</th>
+                    <th scope="col" ><fmt:message key="label.firstname_table"/></th>
+                    <th scope="col" ><fmt:message key="label.lastname_table"/></th>
+                    <th scope="col" ><fmt:message key="label.email_table"/></th>
+                    <th scope="col" ><fmt:message key="label.username_table"/></th>
+                    <th scope="col" ><fmt:message key="label.contact_table"/></th>
+                    <th scope="col" ><fmt:message key="label.user_role_table"/></th>
+                    <th scope="col" ><fmt:message key="label.delete_user_table"/></th>
+                    <th scope="col" ><fmt:message key="label.update_user_table"/></th>
                 </tr>
                 </thead>
 
@@ -263,13 +266,13 @@
                             <form action="${pageContext.request.contextPath}/controller">
                                 <input type="hidden" name="command" value="delete_user">
 <%--                                <label type="submit"><i class="bi bi-trash"></i></label>--%>
-                                <button type="submit" name="delete_user_id" class="btn btn-outline-danger" value="${item.id}">Delete</button>
+                                <button type="submit" name="delete_user_id" class="btn btn-outline-danger" value="${item.id}"><fmt:message key="label.delete_user_button"/></button>
                             </form>
                         </td>
                         <td style="text-transform: none">
                             <form>
                                 <input type="hidden" name="command" value="update_user">
-                                <button class="btn btn-outline-warning" value="${item}"><a href="pages/user_update.jsp">Update</a></button>
+                                <button class="btn btn-outline-warning" value="${item}"><a href="pages/user_update.jsp"><fmt:message key="label.update_user_button"/></a></button>
                             </form>
                         </td>
                     </tr>

@@ -29,8 +29,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void update(Map<String, String> update) throws ServiceException {
-
+    public boolean update(Map<String, String> update) throws ServiceException {
+        return false;
     }
 
     @Override

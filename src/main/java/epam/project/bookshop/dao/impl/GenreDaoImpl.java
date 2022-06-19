@@ -27,7 +27,7 @@ public class GenreDaoImpl implements GenreDao {
     }
 
     @Override
-    public boolean updated(Genre genre) throws DaoException {
+    public boolean updated(String query, Long id) throws DaoException {
         return false;
     }
 

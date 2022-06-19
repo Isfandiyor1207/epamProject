@@ -3,7 +3,15 @@ package epam.project.bookshop.validation;
 import java.util.List;
 
 public class BaseValidation {
-    
+    private static BaseValidation INSTANCE;
+
+    public static BaseValidation getInstance() {
+        if (INSTANCE == null){
+            INSTANCE = new BaseValidation();
+        }
+        return INSTANCE;
+    }
+
     public boolean isEmpty(String text){
         return text == null || text.isEmpty();
     }

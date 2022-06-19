@@ -82,7 +82,6 @@ public class ConnectionPool {
             used.remove(connection);
             free.put(connection);
         } catch (InterruptedException e) {
-            logger.info("");
             Thread.currentThread().interrupt();
         }
     }
@@ -92,7 +91,7 @@ public class ConnectionPool {
             try {
                 free.take().close();
             } catch (InterruptedException | SQLException e) {
-                logger.info("Connection is not destroyed: " + e);
+                logger.error("Connection is not destroyed: " + e);
             }
         }
     }

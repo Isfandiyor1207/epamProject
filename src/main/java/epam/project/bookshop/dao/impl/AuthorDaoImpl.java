@@ -42,7 +42,7 @@ public class AuthorDaoImpl implements AuthorDao {
     }
 
     @Override
-    public boolean updated(Author author) throws DaoException {
+    public boolean updated(String query, Long id) throws DaoException {
         return false;
     }
 

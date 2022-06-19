@@ -1,3 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="uz" scope="session" />
+<fmt:setBundle basename="prop.message"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +28,11 @@
 					<figure>
 						<img src="pages/img/signin-image.jpg" alt="sing up image">
 					</figure>
-					<a href="pages/registration.jsp" class="signup-image-link">Create an account</a>
+					<a href="pages/registration.jsp" class="signup-image-link"><fmt:message key="label.create_account"/></a>
 				</div>
 
 				<div class="signin-form">
-					<h2 class="form-title">Sign in</h2>
+					<h2 class="form-title"><fmt:message key="label.sign_in"/></h2>
 					<form method="get" action="controller" class="register-form" id="login-form">
 						<input type="hidden" name="command" value="login">
 						<div class="form-group">
@@ -42,20 +47,20 @@
 						<b><small style="color: red">${user_error}</small></b>
 						<div class="form-group">
 							<input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-							<label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+							<label for="remember-me" class="label-agree-term"><span><span></span></span><fmt:message key="label.remember_me"/></label>
 						</div>
 						<div class="form-group form-button">
-							<input type="submit" name="signin" id="signin" class="form-submit" value="login" />
+							<input type="submit" name="signin" id="signin" class="form-submit" value="<fmt:message key="label.login"/>" />
 						</div>
 					</form>
-					<div class="social-login">
-						<span class="social-label">Or login with</span>
-						<ul class="socials">
-							<li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-							<li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-							<li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-						</ul>
-					</div>
+<%--					<div class="social-login">--%>
+<%--						<span class="social-label">Or login with</span>--%>
+<%--						<ul class="socials">--%>
+<%--							<li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>--%>
+<%--							<li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>--%>
+<%--							<li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>--%>
+<%--						</ul>--%>
+<%--					</div>--%>
 				</div>
 			</div>
 		</div>

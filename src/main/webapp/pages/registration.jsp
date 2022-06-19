@@ -1,3 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="uz" scope="session" />
+<fmt:setBundle basename="prop.message"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +26,7 @@
 		<div class="container">
 			<div class="signup-content">
 				<div class="signup-form">
-					<h2 class="form-title">Sign up</h2>
+					<h2 class="form-title"><fmt:message key="label.sign_up"/></h2>
 
 					<form method="post" action="${pageContext.request.contextPath}/controller" class="register-form" id="register-form">
 						<input type="hidden" name="command" value="add_user">
@@ -42,6 +47,7 @@
 							<label for="email"><i class="zmdi zmdi-email"></i></label>
 							<input type="email" name="email" id="email" placeholder="Your Email" value="<%= request.getAttribute("email")%>" required=""/>
 						</div>
+						<!---->
 						<div><small style="color: red">${email_error}</small></div>
 						<div class="form-group">
 							<label for="password"><i class="zmdi zmdi-lock"></i></label>
@@ -60,11 +66,10 @@
 						<div><small style="color: red">${phone_number_error}</small></div>
 						<div class="form-group">
 							<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-							<label for="agree-term" class="label-agree-term"><span><span></span></span>
-								I agree all statements in <a href="#" class="term-service">Terms of service</a></label>
+							<label for="agree-term" class="label-agree-term"><span><span></span></span><fmt:message key="label.statement"/></label>
 						</div>
 						<div class="form-group form-button">
-							<input type="submit" name="add_user" id="add_user" class="form-submit" value="Register" />
+							<input type="submit" name="add_user" id="add_user" class="form-submit" value="<fmt:message key="label.register"/>" />
 						</div>
 					</form>
 				</div>

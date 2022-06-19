@@ -27,7 +27,7 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public boolean updated(Book book) throws DaoException {
+    public boolean updated(String query, Long id) throws DaoException {
         return false;
     }
 

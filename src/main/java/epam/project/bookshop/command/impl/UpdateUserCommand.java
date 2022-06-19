@@ -1,7 +1,6 @@
 package epam.project.bookshop.command.impl;
 
 import epam.project.bookshop.command.Command;
-import epam.project.bookshop.command.ParameterName;
 import epam.project.bookshop.exception.CommandException;
 import epam.project.bookshop.exception.ServiceException;
 import epam.project.bookshop.service.UserService;
@@ -14,14 +13,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static epam.project.bookshop.command.ParameterName.*;
+import static epam.project.bookshop.command.WebPageName.*;
 
 public class UpdateUserCommand implements Command {
-    Logger logger= LogManager.getLogger();
+    Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {
 
-        Map<String, String> userUpdate=new HashMap<>();
+        Map<String, String> userUpdate = new HashMap<>();
         userUpdate.put(FIRSTNAME, request.getParameter(FIRSTNAME));
         userUpdate.put(LASTNAME, request.getParameter(LASTNAME));
         userUpdate.put(USERNAME, request.getParameter(USERNAME));
@@ -29,23 +29,18 @@ public class UpdateUserCommand implements Command {
         userUpdate.put(EMAIL, request.getParameter(EMAIL));
         userUpdate.put(PHONE_NUMBER, request.getParameter(PHONE_NUMBER));
 
-        userUpdate.entrySet().removeIf(entry -> entry.getValue() == null);
 
-        for(Map.Entry<String, String> entry: userUpdate.entrySet()){
-            if (entry.getValue()==null || entry.getValue().isEmpty()){
-                logger.info("Remove " + entry.getKey() + " : " + entry.getValue());
-                userUpdate.remove(entry.getKey());
-            }
-        }
-
-        UserService userService= UserServiceImpl.getInstance();
-
-        for (Map.Entry<String, String> entry : userUpdate.entrySet()) {
-            logger.info(entry.getKey() + " : " + entry.getValue());
-        }
+        UserService userService = UserServiceImpl.getInstance();
 
         try {
-            userService.update(userUpdate);
+            boolean update = userService.update(userUpdate);
+
+            if (update) {
+                return USERS_PAGE;
+            }else {
+                return USERS_UPDATE_PAGE;
+            }
+
 
         } catch (ServiceException e) {
             try {
