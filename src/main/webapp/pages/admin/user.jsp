@@ -8,7 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="uz" scope="session" />
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="uz"/>
 <fmt:setBundle basename="prop.message"/>
 <html>
 <head>
@@ -176,6 +178,15 @@
 
                     <a class="navbar-brand" href="#"> <fmt:message key="label.dashboard"/> </a>
 
+<%--                    <ul>--%>
+<%--                        <li><a href="?sessionLocale=en"><fmt:message key="label.language.en" /></a></li>--%>
+<%--                        <li><a href="?sessionLocale=uz"><fmt:message key="label.language.uz" /></a></li>--%>
+<%--                    </ul>--%>
+<%--                    <c:if test="${not empty param.sessionLocale}">--%>
+<%--                        <fmt:message key="label.cookieChangeSuccess" />--%>
+<%--                        <button><a href="admin.jsp"><fmt:message key="label.viewPage" /></a></button>--%>
+<%--                    </c:if>--%>
+
                     <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -243,8 +254,8 @@
                     <th scope="col" >Id</th>
                     <th scope="col" ><fmt:message key="label.firstname_table"/></th>
                     <th scope="col" ><fmt:message key="label.lastname_table"/></th>
-                    <th scope="col" ><fmt:message key="label.email_table"/></th>
                     <th scope="col" ><fmt:message key="label.username_table"/></th>
+                    <th scope="col" ><fmt:message key="label.email_table"/></th>
                     <th scope="col" ><fmt:message key="label.contact_table"/></th>
                     <th scope="col" ><fmt:message key="label.user_role_table"/></th>
                     <th scope="col" ><fmt:message key="label.delete_user_table"/></th>
@@ -272,7 +283,7 @@
                         <td style="text-transform: none">
                             <form>
                                 <input type="hidden" name="command" value="update_user">
-                                <button class="btn btn-outline-warning" value="${item}"><a href="pages/user_update.jsp"><fmt:message key="label.update_user_button"/></a></button>
+                                <button class="btn btn-outline-warning" name="userId" value="${item}"><a href="pages/user_update.jsp"><fmt:message key="label.update_user_button"/></a></button>
                             </form>
                         </td>
                     </tr>

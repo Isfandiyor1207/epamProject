@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static epam.project.bookshop.command.ParameterName.*;
+import static epam.project.bookshop.command.ParameterName.USER_ROLE_ID_IN_DB;
 
 public class UserDaoImpl implements UserDao {
 
@@ -63,10 +63,14 @@ public class UserDaoImpl implements UserDao {
         try (Connection connection = ConnectionPool.getInstance().getConnection();
              Statement statement = connection.createStatement()) {
 
-            String strQuery="UPDATE users SET " + query +
-                    " WHERE id = " + id +" AND deleted = false";
+            logger.info("Query to update: " + query);
 
-            int row= statement.executeUpdate(strQuery);
+            String strQuery = "UPDATE users SET " + query +
+                    " WHERE id = " + id + " AND deleted = false";
+
+            logger.info("Query to update: " + strQuery);
+
+            int row = statement.executeUpdate(strQuery);
             return row > 0;
         } catch (SQLException e) {
             logger.error(e);

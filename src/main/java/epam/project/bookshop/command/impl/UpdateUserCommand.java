@@ -19,7 +19,7 @@ public class UpdateUserCommand implements Command {
     Logger logger = LogManager.getLogger();
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request) throws CommandException {
 
         Map<String, String> userUpdate = new HashMap<>();
         userUpdate.put(FIRSTNAME, request.getParameter(FIRSTNAME));
@@ -35,21 +35,18 @@ public class UpdateUserCommand implements Command {
         try {
             boolean update = userService.update(userUpdate);
 
+
             if (update) {
                 return USERS_PAGE;
-            }else {
+            } else {
+                for (Map.Entry<String, String> entry : userUpdate.entrySet()) {
+                    request.setAttribute(entry.getKey(), entry.getValue());
+                }
                 return USERS_UPDATE_PAGE;
             }
 
-
         } catch (ServiceException e) {
-            try {
-                throw new CommandException(e);
-            } catch (CommandException ex) {
-                ex.printStackTrace();
-            }
+            throw new CommandException(e);
         }
-
-        return null;
     }
 }

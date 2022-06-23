@@ -35,6 +35,12 @@
             <a href="#" class="fas fa-shopping-cart"></a>
             <div id="login-btn" class="fas fa-user"></div>
         </div>
+
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+
     </div>
 
     <div class="header-2">

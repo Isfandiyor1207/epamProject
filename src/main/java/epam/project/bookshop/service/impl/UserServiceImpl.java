@@ -10,10 +10,7 @@ import epam.project.bookshop.validation.RegistrationValidation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import static epam.project.bookshop.command.ParameterName.*;
 import static epam.project.bookshop.validation.ValidationParameterName.*;
@@ -135,6 +132,7 @@ public class UserServiceImpl implements UserService {
         boolean isValid = registrationValidation.checkUpdateUser(update, query);
 
         if (!isValid){
+            logger.info("user update values is not valid:");
             return false;
         }
 
@@ -143,6 +141,7 @@ public class UserServiceImpl implements UserService {
                 Optional<User> optionalUser = userDao.findByUsername(update.get(USERNAME));
                 if (optionalUser.isPresent()){
                     update.put(WORN_USERNAME, ERROR_USERNAME_MSG);
+                    logger.info(WORN_USERNAME + ERROR_USERNAME_MSG);
                     return false;
                 }
             } catch (DaoException e) {
@@ -155,12 +154,17 @@ public class UserServiceImpl implements UserService {
         StringBuilder stringBuilder=new StringBuilder();
 
         query.forEach((key, value) -> stringBuilder.append(key)
-                .append("=")
-                .append(key)
-                .append(", "));
+                .append("='")
+                .append(value)
+                .append("', "));
+
+        String queryString=stringBuilder.toString();
+        queryString = queryString.substring(0, stringBuilder.length()-2);
+
+//        StringBuilder builder=createQuery(query);
 
         try {
-            return userDao.updated(stringBuilder.toString(), 2L);
+            return userDao.updated(queryString, 2L);
         } catch (DaoException e) {
             logger.error(e.getMessage());
             throw new ServiceException(e);
@@ -179,6 +183,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findById(Long id) throws ServiceException {
         return Optional.empty();
+    }
+
+    public StringBuilder createQuery(Map<String, String> query){
+        StringBuilder stringBuilder=new StringBuilder();
+
+        if(query.size()==1){
+            query.forEach((key, value) -> stringBuilder.append(key).append("='").append(value).append("' "));
+        }else {
+            query.forEach((key, value) -> stringBuilder.append(key).append("='").append(value).append("', "));
+        }
+        return stringBuilder;
     }
 
 }

@@ -7,8 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+<%@ page session="true" %>
 <fmt:setLocale value="uz" scope="session" />
 <fmt:setBundle basename="prop.message"/>
+
 <html>
 <head>
     <!-- Required meta tags -->
