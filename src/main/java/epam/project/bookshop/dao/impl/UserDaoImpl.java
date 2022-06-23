@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao {
     private static final String SELECT_ALL = "SELECT id, firstname, lastname, phoneNumber, email, username, roleid, password FROM  users WHERE deleted=false order by id";
     private static final String SELECT_ROLE_ID = "SELECT roleid FROM users WHERE username = ? AND deleted=false;";
     private static final String DELETE_USERS_BY_ID = "UPDATE users SET deleted = true WHERE id =? AND deleted = false";
-    private static final String UPDATE_USERS_BY_ID = "UPDATE users SET   deleted = true WHERE id =? AND deleted = false";
+    private static final String UPDATE_USERS_BY_ID = "UPDATE users SET %s WHERE id =%s AND deleted = false";
     private static final String INSERT_USER = "INSERT INTO users(firstname, lastname, username, password, email, phoneNumber) VALUES (?, ?, ?, ?, ?, ?)";
     private static UserDaoImpl instance;
 
@@ -63,14 +63,9 @@ public class UserDaoImpl implements UserDao {
         try (Connection connection = ConnectionPool.getInstance().getConnection();
              Statement statement = connection.createStatement()) {
 
-            logger.info("Query to update: " + query);
+            String queryFormat = String.format(UPDATE_USERS_BY_ID, query, id);
 
-            String strQuery = "UPDATE users SET " + query +
-                    " WHERE id = " + id + " AND deleted = false";
-
-            logger.info("Query to update: " + strQuery);
-
-            int row = statement.executeUpdate(strQuery);
+            int row = statement.executeUpdate(queryFormat);
             return row > 0;
         } catch (SQLException e) {
             logger.error(e);
