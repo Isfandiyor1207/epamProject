@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="demo:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b5a6a253-5918-4443-91fe-0bfe660c85b0" name="Changes" comment="Genre CRUD is done" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="Interface" />
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/webapp/pages/admin/user.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2A1LZlShk4VLku0ONjRQTvt4BjS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql&#10;postgresql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/pages/css" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\demo\src\main\webapp\pages\css" />
+      <recent name="C:\Users\User\Desktop\demo\src\main\webapp\pages\fonts" />
+      <recent name="C:\Users\User\Desktop\demo\src\main\webapp\pages\img" />
+      <recent name="C:\Users\User\Desktop\demo\src\main\webapp\pages" />
+      <recent name="C:\Users\User\Desktop\demo\library" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\demo\src\main\webapp" />
+      <recent name="C:\Users\User\Desktop\demo\src\main\resources\prop" />
+      <recent name="C:\Users\User\Desktop\demo\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\User\Desktop\demo\src\main\webapp\pages" />
+      <recent name="C:\Users\User\Desktop\demo\src\main\webapp\pages\admin" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 10.0.21" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.21" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment>
+        <artifact name="demo:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/demo_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="964abedb-af83-40b8-b5d1-98d2d34d32c6" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="54988" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="demo:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b5a6a253-5918-4443-91fe-0bfe660c85b0" name="Changes" comment="" />
+      <created>1654172205231</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654172205231</updated>
+      <workItem from="1654172205231" duration="486000" />
+      <workItem from="1654182841633" duration="1780000" />
+      <workItem from="1654192214254" duration="691000" />
+      <workItem from="1654334650907" duration="1963000" />
+      <workItem from="1654338343348" duration="680000" />
+      <workItem from="1654339988154" duration="5288000" />
+      <workItem from="1654363197026" duration="1232000" />
+      <workItem from="1654403465579" duration="2081000" />
+      <workItem from="1654411830475" duration="7483000" />
+      <workItem from="1654430017573" duration="791000" />
+      <workItem from="1654436529521" duration="6824000" />
+      <workItem from="1654444286142" duration="845000" />
+      <workItem from="1654449756519" duration="2660000" />
+      <workItem from="1654484602031" duration="7516000" />
+      <workItem from="1654520762305" duration="5342000" />
+      <workItem from="1654526498606" duration="2776000" />
+      <workItem from="1654596205699" duration="1831000" />
+      <workItem from="1654598142752" duration="2862000" />
+      <workItem from="1654621163418" duration="8344000" />
+      <workItem from="1654684501570" duration="13241000" />
+      <workItem from="1654774131855" duration="10317000" />
+      <workItem from="1654943698084" duration="5195000" />
+      <workItem from="1654961175856" duration="5898000" />
+      <workItem from="1654968886334" duration="845000" />
+      <workItem from="1655013586774" duration="435000" />
+      <workItem from="1655014096215" duration="9676000" />
+      <workItem from="1655051562378" duration="3869000" />
+      <workItem from="1655088861972" duration="1105000" />
+      <workItem from="1655092215437" duration="6476000" />
+      <workItem from="1655113650254" duration="8188000" />
+      <workItem from="1655128320730" duration="5870000" />
+      <workItem from="1655196384030" duration="11622000" />
+      <workItem from="1655275967843" duration="509000" />
+      <workItem from="1655301509453" duration="6655000" />
+      <workItem from="1655385909146" duration="7093000" />
+      <workItem from="1655543990321" duration="3327000" />
+      <workItem from="1655575324352" duration="4661000" />
+      <workItem from="1655644638144" duration="1409000" />
+      <workItem from="1655646296064" duration="2616000" />
+      <workItem from="1655878039855" duration="1127000" />
+      <workItem from="1655974085930" duration="12871000" />
+      <workItem from="1656146296665" duration="10363000" />
+      <workItem from="1656213379806" duration="20022000" />
+      <workItem from="1656303038618" duration="7593000" />
+      <workItem from="1656340561714" duration="381000" />
+    </task>
+    <task id="LOCAL-00001" summary="AuthFilter changed">
+      <created>1654527399124</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654527399124</updated>
+    </task>
+    <task id="LOCAL-00002" summary="adding panel">
+      <created>1654597628875</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654597628875</updated>
+    </task>
+    <task id="LOCAL-00003" summary="corrected version of web pages">
+      <created>1654600992847</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654600992847</updated>
+    </task>
+    <task id="LOCAL-00004" summary="corrected auth">
+      <created>1654666098250</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654666098250</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Registration validation is added!">
+      <created>1654786924603</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1654786924603</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Read and delete user worked.">
+      <created>1655130374378</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655130374378</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ProxyConnection is done">
+      <created>1655303743786</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655303743786</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Localization">
+      <created>1655646677066</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655646677066</updated>
+    </task>
+    <task id="LOCAL-00009" summary="user update is done">
+      <created>1655994369173</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1655994369173</updated>
+    </task>
+    <task id="LOCAL-00010" summary="user update query is changed">
+      <created>1655995035315</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655995035315</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Genre CRUD is done">
+      <created>1656340858184</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1656340858184</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="AuthFilter changed" />
+    <MESSAGE value="adding panel" />
+    <MESSAGE value="corrected version of web pages" />
+    <MESSAGE value="corrected auth" />
+    <MESSAGE value="Registration validation is added!" />
+    <MESSAGE value="Read and delete user worked." />
+    <MESSAGE value="ProxyConnection is done" />
+    <MESSAGE value="Localization" />
+    <MESSAGE value="user update is done" />
+    <MESSAGE value="user update query is changed" />
+    <MESSAGE value="Genre CRUD is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Genre CRUD is done" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
