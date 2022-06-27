@@ -1,14 +1,9 @@
 package epam.project.bookshop.entity;
 
-import lombok.*;
-import lombok.experimental.FieldDefaults;
-import lombok.experimental.SuperBuilder;
-
 import java.util.Objects;
 import java.util.StringJoiner;
 
-@SuperBuilder
-public class Genre extends BaseDomain{
+public class Genre extends BaseDomain {
 
     private String name;
 
@@ -37,6 +32,7 @@ public class Genre extends BaseDomain{
     @Override
     public String toString() {
         return new StringJoiner(", ", Genre.class.getSimpleName() + "[", "]")
+                .add("id='" + id + "'")
                 .add("name='" + name + "'")
                 .toString();
     }

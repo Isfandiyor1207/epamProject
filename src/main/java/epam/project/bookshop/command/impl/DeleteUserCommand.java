@@ -18,7 +18,7 @@ public class DeleteUserCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        String id = request.getParameter(ParameterName.USER_DELETE);
+        String id = request.getParameter(ParameterName.DELETE_ID);
         UserService userService = UserServiceImpl.getInstance();
 
         logger.info("user id: " + id);

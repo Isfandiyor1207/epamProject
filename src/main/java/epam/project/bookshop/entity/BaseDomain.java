@@ -1,13 +1,10 @@
 package epam.project.bookshop.entity;
 
-import lombok.experimental.SuperBuilder;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-@SuperBuilder
 public abstract class BaseDomain implements Serializable {
 
     private static final long serialVersionUID = 1L;

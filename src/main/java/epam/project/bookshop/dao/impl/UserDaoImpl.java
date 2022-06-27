@@ -17,7 +17,7 @@ import static epam.project.bookshop.command.ParameterName.USER_ROLE_ID_IN_DB;
 
 public class UserDaoImpl implements UserDao {
 
-    static Logger logger = LogManager.getLogger();
+    public static final Logger logger = LogManager.getLogger();
 
     private static final String SELECT_BY_USERNAME = "SELECT id, firstname, lastname, password, phoneNumber, email, username, roleid FROM users WHERE username = ? AND deleted = false";
     private static final String SELECT_BY_ID = "SELECT id, firstname, lastname, phoneNumber, email, username, roleid, password FROM users WHERE  id = ? AND deleted = false";
@@ -100,7 +100,7 @@ public class UserDaoImpl implements UserDao {
 
             User user = new User();
             while (resultSet.next()) {
-                user = UserMapper.resultSetToUser(resultSet);
+                user = UserMapper.getInstance().resultSetToEntity(resultSet);
             }
 
             return Optional.of(user);
@@ -119,7 +119,7 @@ public class UserDaoImpl implements UserDao {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                userList.add(UserMapper.resultSetToUser(resultSet));
+                userList.add(UserMapper.getInstance().resultSetToEntity(resultSet));
             }
 
         } catch (SQLException e) {
@@ -139,7 +139,7 @@ public class UserDaoImpl implements UserDao {
 
             User user = new User();
             while (resultSet.next()) {
-                user = UserMapper.resultSetToUser(resultSet);
+                user = UserMapper.getInstance().resultSetToEntity(resultSet);
             }
 
             logger.info("user in dao " + user);

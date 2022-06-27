@@ -1,31 +1,28 @@
 package epam.project.bookshop.entity;
 
-import lombok.experimental.SuperBuilder;
-
 import java.util.Objects;
 import java.util.StringJoiner;
 
-@SuperBuilder
 public class Author extends BaseDomain {
 
-    private String firstName;
+    private String firstname;
 
-    private String lastName;
+    private String lastname;
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     @Override
@@ -34,19 +31,20 @@ public class Author extends BaseDomain {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Author author = (Author) o;
-        return Objects.equals(firstName, author.firstName) && Objects.equals(lastName, author.lastName);
+        return Objects.equals(firstname, author.firstname) && Objects.equals(lastname, author.lastname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), firstName, lastName);
+        return Objects.hash(super.hashCode(), firstname, lastname);
     }
 
     @Override
     public String toString() {
         return new StringJoiner(", ", Author.class.getSimpleName() + "[", "]")
-                .add("firstName='" + firstName + "'")
-                .add("lastName='" + lastName + "'")
+                .add("id='" + id + "'")
+                .add("firstname='" + firstname + "'")
+                .add("lastname='" + lastname + "'")
                 .toString();
     }
 }

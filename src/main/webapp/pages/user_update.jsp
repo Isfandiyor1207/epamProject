@@ -51,8 +51,7 @@
         </div>
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="#" class="dashboard"><i class="material-icons">dashboard</i><span><fmt:message
-                        key="label.dashboard"/></span></a>
+                <a href="#" class="dashboard"><i class="material-icons">dashboard</i><span><fmt:message key="label.dashboard"/></span></a>
             </li>
 
             <div class="small-screen navbar-display">
@@ -122,35 +121,12 @@
             </li>
 
             <li class="dropdown">
-                <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">equalizer</i><span><fmt:message key="label.genre"/></span></a>
-                <ul class="collapse list-unstyled menu" id="pageSubmenu3">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
+                <a href="${pageContext.request.contextPath}/pages/admin/author.jsp">
+                    <i class="material-icons">apps</i><span><fmt:message key="label.author"/></span></a>
             </li>
+
             <li class="dropdown">
-                <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="material-icons">extension</i><span><fmt:message key="label.users"/></span></a>
-                <ul class="collapse list-unstyled menu" id="pageSubmenu4">
-                    <li>
-                        <a href="pages/admin/user.jsp" style="text-transform: none"><fmt:message
-                                key="label.user_information"/></a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
+                <a href="${pageContext.request.contextPath}/pages/admin/user.jsp"><i class="material-icons">extension</i><fmt:message key="label.users"/></a>
             </li>
             <li class="dropdown">
                 <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -241,6 +217,11 @@
 
             <form method="post" autocomplete="on" action="${pageContext.request.contextPath}/controller">
                 <input type="hidden" name="command" value="update_user">
+
+<%--                <% String user= request.getParameter("userToUpdate"); >--%>
+                <p><%= request.getParameter("userId") %></p>
+
+<%--                <input type="hidden" name="userId" value="<%= request.getParameter("userId")%>">--%>
                 <!--First name-->
                 <div class="box">
                     <div class="new iconBox">
@@ -348,7 +329,7 @@
 
 
                 <!---Submit Button------>
-                <div class="box" style="background: #2d3e3f">
+                <div class="box">
                     <input type="submit" name="submit" class="submit" value="Push">
                 </div>
                 <!---Submit Button----->

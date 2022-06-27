@@ -5,6 +5,8 @@ import java.util.List;
 public class BaseValidation {
     private static BaseValidation INSTANCE;
 
+    private BaseValidation(){}
+
     public static BaseValidation getInstance() {
         if (INSTANCE == null){
             INSTANCE = new BaseValidation();

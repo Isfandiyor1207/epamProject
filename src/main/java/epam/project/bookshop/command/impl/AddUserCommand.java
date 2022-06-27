@@ -17,26 +17,21 @@ import java.util.Map;
 import static epam.project.bookshop.command.ParameterName.*;
 
 public class AddUserCommand implements Command {
-    static Logger logger= LogManager.getLogger();
+    public static final Logger logger= LogManager.getLogger();
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        String firstname = request.getParameter(FIRSTNAME);
-        String lastname = request.getParameter(LASTNAME);
-        String username = request.getParameter(USERNAME);
-        String email = request.getParameter(EMAIL);
-        String phoneNumber = request.getParameter(PHONE_NUMBER);
         String repeatedPassword = request.getParameter(PSW_REPEAT);
         String password = request.getParameter(PASSWORD);
 
         UserServiceImpl userService = UserServiceImpl.getInstance();
 
         Map<String, String> addUser=new HashMap<>();
-        addUser.put(FIRSTNAME, firstname);
-        addUser.put(LASTNAME, lastname);
-        addUser.put(USERNAME, username);
-        addUser.put(EMAIL, email);
-        addUser.put(PHONE_NUMBER, phoneNumber);
-        addUser.put(PASSWORD, password);
+        addUser.put(FIRSTNAME, request.getParameter(FIRSTNAME));
+        addUser.put(LASTNAME, request.getParameter(LASTNAME));
+        addUser.put(USERNAME, request.getParameter(USERNAME));
+        addUser.put(EMAIL, request.getParameter(EMAIL));
+        addUser.put(PHONE_NUMBER, request.getParameter(PHONE_NUMBER));
+        addUser.put(PASSWORD, request.getParameter(PASSWORD));
 
         String page;
         if (repeatedPassword.equals(password)) {
@@ -44,10 +39,7 @@ public class AddUserCommand implements Command {
             try {
                 if (userService.add(addUser)){
                     page = WebPageName.MAIN_PAGE; // fixme redirect is not working
-//                    request.setAttribute("status", "success");
                 }else {
-//                    request.setAttribute("status", "failed");
-
                     logger.info("user info is incorrect");
 
                     for (Map.Entry<String, String> entry : addUser.entrySet()) {

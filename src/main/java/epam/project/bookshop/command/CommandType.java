@@ -25,13 +25,13 @@ public enum CommandType {
     ADD_AUTHOR(new AddAuthorCommand()),
     DELETE_AUTHOR(new DeleteAuthorCommand()),
     UPDATE_AUTHOR(new UpdateAuthorCommand()),
-//    READ_AUTHOR(),
+    READ_AUTHOR(new FindAllAuthorsCommand()),
 
     // Genre commands
     ADD_GENRE(new AddGenreCommand()),
     DELETE_GENRE(new DeleteGenreCommand()),
-    UPDATE_GENRE(new UpdateGenreCommand());
-//    READ_GENRE();
+    UPDATE_GENRE(new UpdateGenreCommand()),
+    READ_GENRE(new FindAllGenresCommand());
 
     final Command command;
 

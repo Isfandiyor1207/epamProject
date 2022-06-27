@@ -1,11 +1,8 @@
 package epam.project.bookshop.entity;
 
-import lombok.experimental.SuperBuilder;
-
 import java.util.Objects;
 import java.util.StringJoiner;
 
-@SuperBuilder
 public class User extends BaseDomain {
 
     private String firstName;

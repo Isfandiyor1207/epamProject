@@ -2,16 +2,22 @@ package epam.project.bookshop.mapper;
 
 import epam.project.bookshop.entity.User;
 import epam.project.bookshop.exception.DaoException;
-import epam.project.bookshop.exception.ServiceException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static epam.project.bookshop.command.ParameterName.*;
 
-public class UserMapper {
+public class UserMapper implements BaseMapper<User> {
 
-    public static User resultSetToUser(ResultSet resultSet) throws DaoException {
+    private static final UserMapper instance = new UserMapper();
+
+    public static UserMapper getInstance() {
+        return instance;
+    }
+
+    @Override
+    public User resultSetToEntity(ResultSet resultSet) throws DaoException {
         User user = new User();
         try {
             user.setId(resultSet.getLong(ID));

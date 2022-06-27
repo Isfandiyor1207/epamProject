@@ -1,17 +1,17 @@
 <%--
   Created by IntelliJ IDEA.
   User: User
-  Date: 06.06.2022
-  Time: 10:48
+  Date: 27.06.2022
+  Time: 9:26
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
-<%@ page session="true" %>
-<fmt:setLocale value="uz" scope="session" />
-<fmt:setBundle basename="prop.message"/>
 
+<fmt:setLocale value="uz"/>
+<fmt:setBundle basename="prop.message"/>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/pages/css/bootstrap.min.css">
     <!----css3---->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/pages/css/custom.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/pages/css/item.css">
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,24 +35,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-
-
-
-
 <div class="wrapper">
 
-
     <div class="body-overlay"></div>
-
 
     <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3><img src="pages/img/logo.png" class="img-fluid"/><span><fmt:message key="label.admin"/></span></h3>
+            <h3><img src="${pageContext.request.contextPath}/pages/img/logo.png"
+                     class="img-fluid" alt=""/><span><fmt:message key="label.admin"/></span></h3>
         </div>
         <ul class="list-unstyled components">
-            <li  class="active">
-                <a href="#" class="dashboard"><i class="material-icons">dashboard</i><span><fmt:message key="label.dashboard"/></span></a>
+            <li class="active">
+                <a href="#" class="dashboard"><i class="material-icons">dashboard</i><span><fmt:message
+                        key="label.dashboard"/></span></a>
             </li>
 
             <div class="small-screen navbar-display">
@@ -74,15 +71,15 @@
                     </ul>
                 </li>
 
-                <li  class="d-lg-none d-md-block d-xl-none d-sm-block">
+                <li class="d-lg-none d-md-block d-xl-none d-sm-block">
                     <a href="#"><i class="material-icons">apps</i><span>apps</span></a>
                 </li>
 
-                <li  class="d-lg-none d-md-block d-xl-none d-sm-block">
+                <li class="d-lg-none d-md-block d-xl-none d-sm-block">
                     <a href="#"><i class="material-icons">person</i><span>user</span></a>
                 </li>
 
-                <li  class="d-lg-none d-md-block d-xl-none d-sm-block">
+                <li class="d-lg-none d-md-block d-xl-none d-sm-block">
                     <a href="#"><i class="material-icons">settings</i><span>setting</span></a>
                 </li>
             </div>
@@ -110,12 +107,12 @@
             </li>
 
             <li class="dropdown">
-                <a href="pages/admin/genre.jsp">
+                <a href="${pageContext.request.contextPath}/pages/admin/genre.jsp">
                     <i class="material-icons">equalizer</i><span><fmt:message key="label.genre"/></span></a>
             </li>
-
             <li class="dropdown">
-                <a href="pages/admin/user.jsp"><i class="material-icons">extension</i><fmt:message key="label.users"/></a>
+                <a href="${pageContext.request.contextPath}/pages/admin/user.jsp">
+                    <i class="material-icons">extension</i><span><fmt:message key="label.users"/></span></a>
             </li>
 
             <li class="dropdown">
@@ -148,14 +145,16 @@
                         <span class="material-icons">arrow_back_ios</span>
                     </button>
 
-                    <a class="navbar-brand" href="#"><fmt:message key="label.dashboard"/></a>
+                    <a class="navbar-brand" href="#"> <fmt:message key="label.dashboard"/> </a>
 
                     <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
                         <span class="material-icons">more_vert</span>
                     </button>
 
-                    <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none"
+                         id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="dropdown nav-item active">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
@@ -202,131 +201,70 @@
 
         <div class="main-content">
 
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats">
-                        <div class="card-header">
-                            <div class="icon icon-warning">
-                                <span class="material-icons">equalizer</span>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p class="category"><strong>Visits</strong></p>
-                            <h3 class="card-title">70,340</h3>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons text-info">info</i>
-                                <a href="#pablo">See detailed report</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats">
-                        <div class="card-header">
-                            <div class="icon icon-rose">
-                                <span class="material-icons">shopping_cart</span>
+            <div class="">
+                <form action="${pageContext.request.contextPath}/controller" method="get">
+                    <input type="hidden" name="command" value="read_author">
+                    <input type="submit" class="btn btn-primary" value="<fmt:message key="label.show_all_btn"/>">
+                </form>
 
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p class="category"><strong>Orders</strong></p>
-                            <h3 class="card-title">102</h3>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">local_offer</i> Product-wise sales
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats">
-                        <div class="card-header">
-                            <div class="icon icon-success">
-                                <span class="material-icons">attach_money</span>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p class="category"><strong>Revenue</strong></p>
-                            <h3 class="card-title">$23,100</h3>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">date_range</i> Weekly sales
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats">
-                        <div class="card-header">
-                            <div class="icon icon-info">
-                                <span class="material-icons">follow_the_signs</span>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p class="category"><strong>Followers</strong></p>
-                            <h3 class="card-title">+245</h3>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">update</i> Just Updated
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <form>
+                    <a href="${pageContext.request.contextPath}/pages/admin/author_create.jsp"
+                       style="text-transform: none"
+                       class="btn btn-success"><fmt:message key="label.create_btn"/></a>
+                </form>
+
             </div>
 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <nav class="d-flex">
-                                <ul class="m-0 p-0">
-                                    <li>
-                                        <a href="#">
-                                            Home
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Company
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Portfolio
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Blog
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+            <b><small style="color: red">${deleted_error}</small></b>
 
-                        </div>
-                        <div class="col-md-6">
-                            <p class="copyright d-flex justify-content-end"> &copy 2021 Design by
-                                <a href="#">Vishweb Design</a> BootStrap Admin Dashboard
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <table class="table table-light table-bordered">
+                <thead class="table-primary">
+                <tr>
+                    <th scope="col"><fmt:message key="label.id"/></th>
+                    <th scope="col"><fmt:message key="label.author_firstname"/></th>
+                    <th scope="col"><fmt:message key="label.author_lastname"/></th>
+                    <th scope="col"><fmt:message key="label.delete_btn"/></th>
+                    <th scope="col"><fmt:message key="label.update_btn"/></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <c:forEach items="${author_list}" var="item">
+                    <tr>
+                        <td><c:out value="${item.id}"/></td>
+                        <td><c:out value="${item.firstname}"/></td>
+                        <td><c:out value="${item.lastname}"/></td>
+                        <td>
+                            <form action="${pageContext.request.contextPath}/controller">
+                                <input type="hidden" name="command" value="delete_author">
+                                    <%--                                <label type="submit"><i class="bi bi-trash"></i></label>--%>
+                                <button type="submit" name="delete_by_id" class="btn btn-outline-danger"
+                                        value="${item.id}"><fmt:message key="label.delete_btn"/></button>
+                            </form>
+                        </td>
+                        <td style="text-transform: none">
+                            <form>
+                                    <%--                                <input type="hidden" name="command" value="update_user">--%>
+                                <button class="btn btn-outline-warning" name="author" value="${item}">
+                                    <a href="${pageContext.request.contextPath}/pages/admin/author_update.jsp"><fmt:message key="label.update_btn"/></a></button>
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
+
     </div>
 </div>
 
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="pages/js/jquery-3.3.1.slim.min.js"></script>
-<script src="pages/js/popper.min.js"></script>
-<script src="pages/js/bootstrap.min.js"></script>
-<script src="pages/js/jquery-3.3.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/pages/js/jquery-3.3.1.slim.min.js"></script>
+<script src="${pageContext.request.contextPath}/pages/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/pages/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/pages/js/jquery-3.3.1.min.js"></script>
 
 
 <script type="text/javascript">
@@ -341,9 +279,8 @@
         });
 
     });
+
 </script>
 
 </body>
 </html>
-
-

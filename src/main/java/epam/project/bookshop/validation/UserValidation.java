@@ -1,5 +1,6 @@
 package epam.project.bookshop.validation;
 
+import epam.project.bookshop.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -8,17 +9,19 @@ import java.util.Map;
 import static epam.project.bookshop.command.ParameterName.*;
 import static epam.project.bookshop.validation.ValidationParameterName.*;
 
-public class RegistrationValidation {
+public class UserValidation {
 
-    Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     private static final String EMAIL_REGEX = "^(.+)@(.+)$";
     private static final String PASSWORD_REGEX = "((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{6,20})";
     private static final String PHONE_NUMBER_REGEX = "^(\\+\\d{12})$";
     private static final BaseValidation baseValidation = BaseValidation.getInstance();
-    private static final RegistrationValidation INSTANCE = new RegistrationValidation();
+    private static final UserValidation INSTANCE = new UserValidation();
 
-    public static RegistrationValidation getInstance() {
+    private UserValidation(){}
+
+    public static UserValidation getInstance() {
         return INSTANCE;
     }
 

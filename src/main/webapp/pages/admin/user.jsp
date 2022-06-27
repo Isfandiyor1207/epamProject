@@ -101,50 +101,17 @@
             </li>
 
             <li class="dropdown">
-                <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="${pageContext.request.contextPath}/pages/admin/author.jsp">
                     <i class="material-icons">apps</i><span><fmt:message key="label.author"/></span></a>
-                <ul class="collapse list-unstyled menu" id="pageSubmenu2">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
             </li>
 
             <li class="dropdown">
-                <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="${pageContext.request.contextPath}/pages/admin/genre.jsp">
                     <i class="material-icons">equalizer</i><span><fmt:message key="label.genre"/></span></a>
-                <ul class="collapse list-unstyled menu" id="pageSubmenu3">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
             </li>
             <li class="dropdown">
-                <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="${pageContext.request.contextPath}/pages/admin/user.jsp">
                     <i class="material-icons">extension</i><span><fmt:message key="label.users"/></span></a>
-                <ul class="collapse list-unstyled menu" id="pageSubmenu4">
-                    <li>
-                        <a href="#" style="text-transform: none"><fmt:message key="label.user_information"/></a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
             </li>
             <li class="dropdown">
                 <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -177,15 +144,6 @@
                     </button>
 
                     <a class="navbar-brand" href="#"> <fmt:message key="label.dashboard"/> </a>
-
-<%--                    <ul>--%>
-<%--                        <li><a href="?sessionLocale=en"><fmt:message key="label.language.en" /></a></li>--%>
-<%--                        <li><a href="?sessionLocale=uz"><fmt:message key="label.language.uz" /></a></li>--%>
-<%--                    </ul>--%>
-<%--                    <c:if test="${not empty param.sessionLocale}">--%>
-<%--                        <fmt:message key="label.cookieChangeSuccess" />--%>
-<%--                        <button><a href="admin.jsp"><fmt:message key="label.viewPage" /></a></button>--%>
-<%--                    </c:if>--%>
 
                     <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -243,7 +201,7 @@
 
             <form action="${pageContext.request.contextPath}/controller" method="get">
                 <input type="hidden" name="command" value="read_user">
-                <input type="submit" class="btn btn-primary" value="<fmt:message key="label.show_users_button"/>">
+                <input type="submit" class="btn btn-primary" value="<fmt:message key="label.show_all_btn"/>">
             </form>
 
             <b><small style="color: red">${deleted_error}</small></b>
@@ -251,15 +209,15 @@
             <table class="table table-light table-bordered">
                 <thead class="table-primary">
                 <tr>
-                    <th scope="col" >Id</th>
+                    <th scope="col" ><fmt:message key="label.id"/></th>
                     <th scope="col" ><fmt:message key="label.firstname_table"/></th>
                     <th scope="col" ><fmt:message key="label.lastname_table"/></th>
                     <th scope="col" ><fmt:message key="label.username_table"/></th>
                     <th scope="col" ><fmt:message key="label.email_table"/></th>
                     <th scope="col" ><fmt:message key="label.contact_table"/></th>
                     <th scope="col" ><fmt:message key="label.user_role_table"/></th>
-                    <th scope="col" ><fmt:message key="label.delete_user_table"/></th>
-                    <th scope="col" ><fmt:message key="label.update_user_table"/></th>
+                    <th scope="col" ><fmt:message key="label.delete_btn"/></th>
+                    <th scope="col" ><fmt:message key="label.update_btn"/></th>
                 </tr>
                 </thead>
 
@@ -277,13 +235,13 @@
                             <form action="${pageContext.request.contextPath}/controller">
                                 <input type="hidden" name="command" value="delete_user">
 <%--                                <label type="submit"><i class="bi bi-trash"></i></label>--%>
-                                <button type="submit" name="delete_user_id" class="btn btn-outline-danger" value="${item.id}"><fmt:message key="label.delete_user_button"/></button>
+                                <button type="submit" name="delete_by_id" class="btn btn-outline-danger" value="${item.id}"><fmt:message key="label.delete_btn"/></button>
                             </form>
                         </td>
                         <td style="text-transform: none">
                             <form>
-                                <input type="hidden" name="command" value="update_user">
-                                <button class="btn btn-outline-warning" name="userId" value="${item}"><a href="pages/user_update.jsp"><fmt:message key="label.update_user_button"/></a></button>
+<%--                                <input type="hidden" name="command" value="update_user">--%>
+                                <button class="btn btn-outline-warning" name="userId" value="${item}"><a href="pages/user_update.jsp"><fmt:message key="label.update_btn"/></a></button>
                             </form>
                         </td>
                     </tr>

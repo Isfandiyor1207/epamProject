@@ -6,7 +6,7 @@ import epam.project.bookshop.exception.DaoException;
 import epam.project.bookshop.exception.ServiceException;
 import epam.project.bookshop.service.UserService;
 import epam.project.bookshop.validation.BaseValidation;
-import epam.project.bookshop.validation.RegistrationValidation;
+import epam.project.bookshop.validation.UserValidation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,10 +17,10 @@ import static epam.project.bookshop.validation.ValidationParameterName.*;
 
 public class UserServiceImpl implements UserService {
     private static Logger logger = LogManager.getLogger();
-    private static final BaseValidation baseValidation = new BaseValidation();
+    private static final BaseValidation baseValidation = BaseValidation.getInstance();
     private static final UserServiceImpl instance = new UserServiceImpl();
     private final UserDaoImpl userDao = UserDaoImpl.getInstance();
-    private final RegistrationValidation registrationValidation = RegistrationValidation.getInstance();
+    private final UserValidation userValidation = UserValidation.getInstance();
 
     private UserServiceImpl() {
     }
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean add(Map<String, String> userData) throws ServiceException {
 
-        if (!registrationValidation.userRegistrationValidation(userData)) {
+        if (!userValidation.userRegistrationValidation(userData)) {
             logger.info("user is not registered his information is invalid");
             return false;
         }
@@ -102,10 +102,9 @@ public class UserServiceImpl implements UserService {
         user.setPhoneNumber(userData.get(PHONE_NUMBER));
 
         try {
-            boolean isSave = userDao.save(user);
-            logger.info("check user to add" + isSave);
-            return isSave;
+            return userDao.save(user);
         } catch (DaoException e) {
+            logger.error("User is not added to database.");
             throw new ServiceException(e);
         }
     }
@@ -129,7 +128,7 @@ public class UserServiceImpl implements UserService {
 
         Map<String, String> query=new HashMap<>();
 
-        boolean isValid = registrationValidation.checkUpdateUser(update, query);
+        boolean isValid = userValidation.checkUpdateUser(update, query);
 
         if (!isValid){
             logger.info("user update values is not valid:");
@@ -161,10 +160,8 @@ public class UserServiceImpl implements UserService {
         String queryString=stringBuilder.toString();
         queryString = queryString.substring(0, stringBuilder.length()-2);
 
-//        StringBuilder builder=createQuery(query);
-
         try {
-            return userDao.updated(queryString, 2L);
+            return userDao.updated(queryString, Long.valueOf(update.get(ID)));
         } catch (DaoException e) {
             logger.error(e.getMessage());
             throw new ServiceException(e);
@@ -185,15 +182,5 @@ public class UserServiceImpl implements UserService {
         return Optional.empty();
     }
 
-    public StringBuilder createQuery(Map<String, String> query){
-        StringBuilder stringBuilder=new StringBuilder();
-
-        if(query.size()==1){
-            query.forEach((key, value) -> stringBuilder.append(key).append("='").append(value).append("' "));
-        }else {
-            query.forEach((key, value) -> stringBuilder.append(key).append("='").append(value).append("', "));
-        }
-        return stringBuilder;
-    }
 
 }

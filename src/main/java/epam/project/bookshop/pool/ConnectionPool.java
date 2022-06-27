@@ -27,7 +27,7 @@ public class ConnectionPool {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            logger.error("Driver not registered: " + e);
+            logger.fatal("Driver not registered: " + e);
             throw new ExceptionInInitializerError(e);
         }
     }
@@ -69,13 +69,22 @@ public class ConnectionPool {
             connection = free.take();
             used.put(connection);
         } catch (InterruptedException e) {
-            logger.error("Get Connection is failed: " + e);
+            logger.fatal("Get Connection is failed: " + e);
             Thread.currentThread().interrupt();
         }
         return connection;
     }
 
     // todo deregisterDriver
+    private void deregisterDriver(){
+        DriverManager.getDrivers().asIterator().forEachRemaining(driver -> {
+            try{
+                DriverManager.deregisterDriver(driver);
+            }catch (SQLException e){
+                logger.fatal("Can't access database to deregister driver: ",e);
+            }
+        });
+    }
 
     public void releaseConnection(ProxyConnection connection) {
         try {
@@ -91,7 +100,7 @@ public class ConnectionPool {
             try {
                 free.take().close();
             } catch (InterruptedException | SQLException e) {
-                logger.error("Connection is not destroyed: " + e);
+                logger.fatal("Connection is not destroyed: " + e);
             }
         }
     }

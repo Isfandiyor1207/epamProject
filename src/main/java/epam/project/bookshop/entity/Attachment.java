@@ -1,11 +1,8 @@
 package epam.project.bookshop.entity;
 
-import lombok.experimental.SuperBuilder;
-
 import java.util.Objects;
 import java.util.StringJoiner;
 
-@SuperBuilder
 public class Attachment extends BaseDomain {
 
     private String absoluteName;
